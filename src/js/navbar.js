@@ -54,7 +54,7 @@ export function initNavbar() {
     }
 
     /* ── Active link via IntersectionObserver ── */
-    const sections = document.querySelectorAll('main [id]');
+    const sections = document.querySelectorAll('#hero, #impact, #portfolio, #depoimentos, #contato, #servicos, #sobre');
     const allLinks = document.querySelectorAll('.navbar__nav-link');
 
     if (sections.length && allLinks.length) {
