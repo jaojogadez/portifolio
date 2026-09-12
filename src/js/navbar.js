@@ -1,18 +1,6 @@
-/**
- * Navbar – Flow Web Sites
- * Módulo: navbar.js
- *
- * Responsabilidades:
- *  - Aparece só após o hero sair do viewport (.visible)
- *  - Efeito de scroll (.scrolled)
- *  - Toggle do menu hamburger (mobile)
- *  - Fechar menu ao clicar em link mobile
- *  - Highlight do link ativo via IntersectionObserver
- */
-
 export function initNavbar() {
-    const wrapper    = document.getElementById('navbar');
-    const hamburger  = document.getElementById('navbar-hamburger');
+    const wrapper = document.getElementById('navbar');
+    const hamburger = document.getElementById('navbar-hamburger');
     const mobileMenu = document.getElementById('navbar-mobile-menu');
 
     if (!wrapper || !hamburger || !mobileMenu) return;
@@ -25,7 +13,7 @@ export function initNavbar() {
             wrapper.classList.toggle('visible', window.scrollY > halfHero);
         };
         window.addEventListener('scroll', checkNavbarVisibility, { passive: true });
-        checkNavbarVisibility(); // checar no load
+        checkNavbarVisibility();
     }
 
     /* ── Scroll: adiciona .scrolled após 30px ── */
@@ -54,21 +42,36 @@ export function initNavbar() {
     }
 
     /* ── Active link via IntersectionObserver ── */
-    const sections = document.querySelectorAll('#hero, #impact, #portfolio, #depoimentos, #contato, #servicos, #sobre');
+    // Adicionamos 'footer' à lista de elementos observados
+    const sections = document.querySelectorAll('#hero, #impact, #portfolio, #processo, #faq, #depoimentos, #contato, #servicos, #sobre, footer, #footer');
     const allLinks = document.querySelectorAll('.navbar__nav-link');
 
     if (sections.length && allLinks.length) {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
+                    // Sempre remove a classe 'active' de todos os links primeiro
                     allLinks.forEach(l => l.classList.remove('active'));
-                    document.querySelectorAll(`[href="#${entry.target.id}"]`)
-                        .forEach(l => l.classList.add('active'));
+
+                    const target = entry.target;
+
+                    // Se o elemento visível FOR o footer, não ativa nenhum link
+                    if (target.tagName.toLowerCase() === 'footer' || target.id === 'footer') {
+                        return;
+                    }
+
+                    // Caso seja uma seção normal com ID, ativa o link correspondente
+                    if (target.id) {
+                        const activeLinks = document.querySelectorAll(`[href="#${target.id}"]`);
+                        activeLinks.forEach(l => l.classList.add('active'));
+                    }
                 }
             });
-        }, { threshold: 0.4 });
+        }, {
+            rootMargin: '-20% 0px -35% 0px',
+            threshold: 0.1
+        });
 
         sections.forEach(section => observer.observe(section));
     }
 }
-

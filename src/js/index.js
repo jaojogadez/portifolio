@@ -18,3 +18,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
 import './faq.js';
 import './counter.js';
+import './process.js';

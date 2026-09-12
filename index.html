@@ -42,8 +42,8 @@
     <!-- =============================================
      Favicon
      ============================================= -->
-    <link rel="icon" href="src/assets/logos/logo.png" type="image/png" />
-    <link rel="apple-touch-icon" href="src/assets/logos/logo.png" />
+    <link rel="icon" href="src/assets/logos/logo-devjoaopedro.png" type="image/png" />
+    <link rel="apple-touch-icon" href="src/assets/logos/logo-devjoaopedro.png" />
 
     <!-- =============================================
      Performance – Preconnect & Preload
@@ -111,21 +111,16 @@
         <nav class="navbar" aria-label="Navegação principal">
 
             <!-- Logo -->
-            <a href="#" class="navbar__logo" id="navbar-logo" aria-label="Flow Web Sites – Voltar ao início">
-                <!-- Desktop: logo completa -->
-                <img src="src/assets/logos/logo.png" alt="logo-devjoaopedro"
-                    class="navbar__logo-img navbar__logo-img--full" id="logo-full" />
-                <!-- Mobile: logo ícone -->
-                <img src="src/assets/logos/logo.png" alt="logo-devjoaopedro"
-                    class="navbar__logo-img navbar__logo-img--icon" id="logo-icon" />
+            <a href="#" class="navbar__logo" id="navbar-logo" aria-label="Voltar ao início">
+                <img src="src/assets/logos/logo.png" alt="logo-devjoaopedro" class="navbar__logo-img" />
             </a>
 
             <!-- Links (desktop) -->
             <ul class="navbar__nav" role="list">
-                <li><a href="#sobre" class="navbar__nav-link active" id="nav-link-sobre">Sobre</a></li>
-                <li><a href="#servicos" class="navbar__nav-link" id="nav-link-servicos">Serviços</a></li>
+                <li><a href="#impact" class="navbar__nav-link active" id="nav-link-sobre">Sobre</a></li>
                 <li><a href="#portfolio" class="navbar__nav-link" id="nav-link-portfolio">Portfólio</a></li>
-                <li><a href="#depoimentos" class="navbar__nav-link" id="nav-link-depoimentos">Depoimentos</a></li>
+                <li><a href="#processo" class="navbar__nav-link" id="nav-link-processo">Processo</a></li>
+                <li><a href="#faq" class="navbar__nav-link" id="nav-link-faq">FAQ</a></li>
                 <li><a href="#contato" class="navbar__nav-link" id="nav-link-contato">Contato</a></li>
             </ul>
 
@@ -146,10 +141,10 @@
 
         <!-- Mobile menu drawer -->
         <div class="navbar__mobile-menu" id="navbar-mobile-menu" role="navigation" aria-label="Menu mobile">
-            <a href="#sobre" class="navbar__nav-link active" id="mob-link-sobre">Sobre</a>
-            <a href="#servicos" class="navbar__nav-link" id="mob-link-servicos">Serviços</a>
+            <a href="#impact" class="navbar__nav-link active" id="mob-link-sobre">Sobre</a>
             <a href="#portfolio" class="navbar__nav-link" id="mob-link-portfolio">Portfólio</a>
-            <a href="#depoimentos" class="navbar__nav-link" id="mob-link-depoimentos">Depoimentos</a>
+            <a href="#processo" class="navbar__nav-link" id="mob-link-processo">Processo</a>
+            <a href="#faq" class="navbar__nav-link" id="mob-link-faq">FAQ</a>
             <a href="#contato" class="navbar__nav-link" id="mob-link-contato">Contato</a>
             <div class="navbar__actions">
                 <a href="#portfolio" class="navbar__btn-ghost" id="mob-btn-portfolio">Ver Projetos</a>
@@ -277,7 +272,7 @@
     <!-- =============================================
          IMPACT – Potencialização do Negócio
          ============================================= -->
-    <section id="impact" class="impact">
+    <section id="impact" class="impact active">
 
         <div class="impact__head reveal">
             <h2 class="impact__title">POTENCIALIZO<br><span>O SEU NEGÓCIO</span></h2>
@@ -569,9 +564,100 @@
     </section>
 
     <!-- =============================================
+     SEÇÃO: Processo de Criação
+     ============================================= -->
+    <section class="process-section" id="processo">
+        <div class="process-container">
+
+            <!-- Cabeçalho -->
+            <div class="impact__head reveal process-header">
+                <h2 class="impact__title">Nosso processso de <br><span>Criação</span></h2>
+            </div>
+    
+
+            <!-- Lista Estilo Accordion / Hover -->
+            <div class="process-list">
+
+                <!-- Passo 01 (Ativo por padrão para guiar o usuário) -->
+                <div class="process-item reveal">
+                    <div class="process-number">01</div>
+                    <div class="process-content">
+                        <h3 class="process-name">Contrato e Alinhamento</h3>
+                        <div class="process-tags">
+                            <span>Assinatura Digital</span> •
+                            <span>Documento de Requisitos</span> •
+                            <span>Briefing</span>
+                        </div>
+                        <div class="process-details">
+                            <p>Formalizamos o projeto com total transparência e definimos as metas e requisitos
+                                essenciais do site antes de escrever a primeira linha de código.</p>
+                            <a href="#contato" class="process-btn">Iniciar Projeto</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Passo 02 -->
+                <div class="process-item reveal">
+                    <div class="process-number">02</div>
+                    <div class="process-content">
+                        <h3 class="process-name">Prototipação e Design</h3>
+                        <div class="process-tags">
+                            <span>Figma</span> •
+                            <span>UI/UX Design</span> •
+                            <span>Wireframes</span>
+                        </div>
+                        <div class="process-details">
+                            <p>Desenhamos a interface completa no Figma focando na experiência do usuário e na
+                                identidade visual da sua marca para sua aprovação prévia.</p>
+                            <a href="#contato" class="process-btn">Iniciar Projeto</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Passo 03 -->
+                <div class="process-item reveal">
+                    <div class="process-number">03</div>
+                    <div class="process-content">
+                        <h3 class="process-name">Desenvolvimento</h3>
+                        <div class="process-tags">
+                            <span>Código Limpo</span> •
+                            <span>Responsividade</span> •
+                            <span>Alta Velocidade</span>
+                        </div>
+                        <div class="process-details">
+                            <p>Transformamos o design aprovado em um site rápido, seguro e totalmente otimizado para
+                                funcionar perfeitamente em celulares, tablets e computadores.</p>
+                            <a href="#contato" class="process-btn">Iniciar Projeto</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Passo 04 -->
+                <div class="process-item reveal">
+                    <div class="process-number">04</div>
+                    <div class="process-content">
+                        <h3 class="process-name">Lançamento e Otimização</h3>
+                        <div class="process-tags">
+                            <span>Google Search</span> •
+                            <span>Google Analytics</span> •
+                            <span>Google Meu Negócio</span>
+                        </div>
+                        <div class="process-details">
+                            <p>Colocamos seu site no ar e configuramos todas as ferramentas necessárias para indexação
+                                no Google, rastreamento de visitas e atração de clientes locais.</p>
+                            <a href="#contato" class="process-btn">Iniciar Projeto</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- =============================================
     FAQ – Perguntas frequentes
          ============================================= -->
-    <section class="faq-section">
+    <section class="faq-section" id="faq">
         <div class="faq-container">
             <!-- Cabeçalho da Seção -->
             <div class="faq-header">

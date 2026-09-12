@@ -1,0 +1,182 @@
+/* ============================================
+   Módulo CSS: process.css
+   ============================================ */
+
+.process-section {
+    padding: 100px 24px;
+    position: relative;
+    background: transparent;
+}
+
+.process-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* --- Cabeçalho --- */
+.process-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.process-badge {
+    display: inline-block;
+    padding: 6px 16px;
+    border-radius: 9999px;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--accent-blue, #00d2ff);
+    background: rgba(0, 210, 255, 0.08);
+    border: 1px solid rgba(0, 210, 255, 0.2);
+    margin-bottom: 16px;
+}
+
+.process-title {
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    font-weight: 700;
+    color: var(--text-main, #ffffff);
+}
+
+/* --- Lista & Linhas Divisórias --- */
+.process-list {
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.process-item {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    padding: 36px 32px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    background: transparent;
+    cursor: pointer;
+    transition: background 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease;
+    border-radius: 12px;
+}
+
+/* Destaque no Hover e Item Ativo */
+.process-item:hover,
+.process-item--active {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+/* Removemos o :hover genérico para controle via classe e responsividade */
+.process-item--active .process-details {
+    max-height: 250px;
+    opacity: 1;
+    margin-top: 20px;
+}
+
+.process-item--active .process-tags {
+    color: var(--accent-blue, #00d2ff);
+}
+
+.process-item--active .process-number {
+    color: var(--accent-blue, #00d2ff);
+}
+
+/* --- Números (01, 02...) --- */
+.process-number {
+    font-family: var(--font-body);
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--text-muted, #64748b);
+    transition: color 0.3s ease;
+    padding-top: 6px;
+}
+
+.process-item:hover .process-number,
+.process-item--active .process-number {
+    color: var(--accent-blue, #00d2ff);
+}
+
+/* --- Título do Passo & Tags --- */
+.process-name {
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    font-weight: 600;
+    color: var(--text-main, #ffffff);
+    margin-bottom: 8px;
+    line-height: 1.2;
+}
+
+.process-tags {
+    font-size: 0.875rem;
+    color: var(--text-muted, #94a3b8);
+    margin-bottom: 0;
+    transition: color 0.3s ease, margin-bottom 0.3s ease;
+}
+
+.process-tags span {
+    color: inherit;
+}
+
+/* --- Detalhes Expansíveis (Revela no Hover) --- */
+.process-details {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+        opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+        margin-top 0.4s ease;
+}
+
+.process-item:hover .process-details,
+.process-item--active .process-details {
+    max-height: 200px;
+    opacity: 1;
+    margin-top: 20px;
+}
+
+.process-item:hover .process-tags,
+.process-item--active .process-tags {
+    color: var(--accent-blue, #00d2ff);
+}
+
+.process-details p {
+    font-size: 1rem;
+    color: var(--text-muted, #94a3b8);
+    line-height: 1.6;
+    max-width: 750px;
+    margin-bottom: 24px;
+}
+
+/* --- Botão do Passo --- */
+.process-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 24px;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #ffffff;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: all 0.25s ease;
+}
+
+.process-btn:hover {
+    background: #ffffff;
+    color: #0b0e14;
+    border-color: #ffffff;
+}
+
+/* --- Responsividade --- */
+@media (max-width: 768px) {
+    .process-item {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 24px 16px;
+    }
+
+    .process-number {
+        padding-top: 0;
+    }
+
+    .process-details p {
+        font-size: 0.9375rem;
+    }
+}
