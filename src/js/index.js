@@ -15,3 +15,5 @@ document.addEventListener('DOMContentLoaded', () => {
     initPortfolio();
     initContactModal();
 });
+
+import './faq.js';
