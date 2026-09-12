@@ -17,7 +17,7 @@
     position: relative;
 }
 
-.portfolio__inner::before {
+/* .portfolio__inner::before {
     content: "";
     position: absolute;
     top: -120px;
@@ -28,7 +28,7 @@
     background: var(--glow-radial);
     pointer-events: none;
     z-index: 0;
-}
+} */
 
 .portfolio__header {
     position: relative;

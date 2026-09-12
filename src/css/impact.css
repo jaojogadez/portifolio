@@ -49,8 +49,7 @@
     height: 100%;
     max-height: 65vh;
     object-fit: contain;
-    /* Sombra pesada e premium pra simular mundo real */
-    filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 1));
+    filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.01));
 }
 
 .impact__phone--center {

@@ -92,7 +92,7 @@ function chartScreen() {
 const PROJECTS = [
     {
         id: 'garra',
-        name: 'ONG GARRA — Resgate de Animais',
+        name: 'Site Oficial da ONG GARRA',
         desc: 'Site institucional real, focado em doações, voluntariado e adoção responsável.',
         url: 'https://garramarilia.vercel.app',
         pages: [
@@ -223,7 +223,7 @@ export function initPortfolio() {
 
     let projectIndex = 0;
     let pageId = PROJECTS[0].pages[0].id;
-    let device = 'web';
+    let device = window.innerWidth <= 768 ? 'app' : 'web';
 
     function currentProject() {
         return PROJECTS[projectIndex];
@@ -262,7 +262,7 @@ export function initPortfolio() {
         if (proj.url) {
             carLink.href = proj.url;
             carLink.classList.remove('is-disabled');
-            carLink.innerHTML = `Acessar site oficial <svg viewBox="0 0 24 24"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg>`;
+            carLink.innerHTML = `Acessar Site <svg viewBox="0 0 24 24"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg>`;
         } else {
             carLink.removeAttribute('href');
             carLink.classList.add('is-disabled');
@@ -348,11 +348,20 @@ export function initPortfolio() {
         setTimeout(drawConnectors, 420);
     });
 
+    function setInitialDeviceState() {
+        root.setAttribute('data-device', device);
+        labelWeb.classList.toggle('is-active', device === 'web');
+        labelApp.classList.toggle('is-active', device === 'app');
+        toggle.setAttribute('aria-pressed', String(device === 'app'));
+    }
+
+    setInitialDeviceState();
     buildButtons();
     buildDots();
     renderScreen();
     renderCarousel();
+
     window.addEventListener('resize', drawConnectors);
     window.addEventListener('load', drawConnectors);
     setTimeout(drawConnectors, 60);
-}
+}''
