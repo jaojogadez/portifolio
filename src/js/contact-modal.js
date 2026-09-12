@@ -1,7 +1,6 @@
 /**
- * contact-modal.js – Contact Modal Manager (Redesign)
- * Gerencia abertura, fechamento e funcionalidade real do modal de contato
- * Integração com WhatsApp para conversão
+ * contact-modal.js – Contact Modal Manager
+ * Simples, direto, sem excessos
  */
 
 export function initContactModal() {
@@ -12,16 +11,16 @@ export function initContactModal() {
 
     if (!modal || !form) return;
 
-    // Configuração do número WhatsApp
-    const WHATSAPP_NUMBER = '5500000000000'; // Substitua com o número real
+    // Seu WhatsApp
+    const WHATSAPP_NUMBER = '5514933009075';
 
     /**
-     * Abre o modal com animação
+     * Abre o modal
      */
     function openModal() {
         modal.classList.add('open');
         
-        // Prevenir scroll do body, mas permitir scroll do modal
+        // Bloqueia scroll do body
         const scrollY = window.scrollY;
         document.documentElement.style.overflow = 'hidden';
         document.body.style.overflow = 'hidden';
@@ -29,24 +28,20 @@ export function initContactModal() {
         document.body.style.width = '100%';
         document.body.style.top = `-${scrollY}px`;
         
-        // Foca no primeiro input com pequeno delay
+        // Foca no primeiro input
         setTimeout(() => {
-            const firstInput = form.querySelector('input, select, textarea');
-            if (firstInput) {
-                firstInput.focus();
-                // Scroll até o primeiro input no modal se necessário
-                form.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-            }
+            const firstInput = form.querySelector('input');
+            if (firstInput) firstInput.focus();
         }, 200);
     }
 
     /**
-     * Fecha o modal com animação
+     * Fecha o modal
      */
     function closeModal() {
         modal.classList.remove('open');
         
-        // Restaurar scroll do body
+        // Restaura scroll
         const scrollY = document.body.style.top;
         document.documentElement.style.overflow = '';
         document.body.style.overflow = '';
@@ -54,36 +49,31 @@ export function initContactModal() {
         document.body.style.width = '';
         document.body.style.top = '';
         
-        // Restaurar posição original
         if (scrollY) {
             window.scrollTo(0, parseInt(scrollY || '0') * -1);
         }
     }
 
     /**
-     * Formata mensagem para WhatsApp
-     * @param {Object} data - Dados do formulário
-     * @returns {string} - Mensagem formatada
+     * Formata a mensagem para WhatsApp
      */
-    function formatWhatsAppMessage(data) {
+    function formatMessage(data) {
         const { name, phone, project, message } = data;
         
-        let whatsappMessage = `Olá! Vim pelo site da Flow Web Sites.\n\n`;
-        whatsappMessage += `*Nome:* ${name || 'Não informado'}\n`;
-        whatsappMessage += `*Telefone:* ${phone || 'Não informado'}\n`;
-        whatsappMessage += `*Tipo de Projeto:* ${getProjectLabel(project)}\n`;
+        let msg = `Olá! 👋\n\n`;
+        msg += `*Nome:* ${name || 'Não informado'}\n`;
+        msg += `*WhatsApp:* ${phone || 'Não informado'}\n`;
+        msg += `*Projeto:* ${getProjectLabel(project)}\n`;
         
-        if (message && message.trim()) {
-            whatsappMessage += `*Mensagem:* ${message}\n`;
+        if (message?.trim()) {
+            msg += `\n*Detalhes:*\n${message}\n`;
         }
 
-        return whatsappMessage;
+        return msg;
     }
 
     /**
-     * Retorna o label do tipo de projeto
-     * @param {string} value - Valor do select
-     * @returns {string} - Label legível
+     * Label do tipo de projeto
      */
     function getProjectLabel(value) {
         const labels = {
@@ -91,40 +81,38 @@ export function initContactModal() {
             'site-institucional': 'Site Institucional',
             'loja-virtual': 'Loja Virtual',
             'redesign': 'Redesign de Site',
-            'nao-sei': 'Ainda não sei'
+            'nao-sei': 'Não sei ainda'
         };
         return labels[value] || 'Não especificado';
     }
 
     /**
-     * Abre WhatsApp com mensagem pré-formatada
-     * @param {string} message - Mensagem a enviar
+     * Abre WhatsApp
      */
     function openWhatsApp(message) {
-        const encodedMessage = encodeURIComponent(message);
-        const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
-        window.open(whatsappUrl, '_blank');
+        const encoded = encodeURIComponent(message);
+        window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encoded}`, '_blank');
     }
 
     /**
      * Valida o formulário
-     * @returns {boolean} - True se válido
      */
-    function validateForm(formData) {
-        const { name, phone, project } = formData;
+    function validateForm(data) {
+        const { name, phone, project } = data;
 
         if (!name || name.trim().length < 2) {
-            alert('Por favor, digite seu nome completo.');
+            alert('Digite seu nome completo');
             return false;
         }
 
-        if (!phone || phone.trim().length < 10) {
-            alert('Por favor, digite um WhatsApp válido.');
+        const phoneClean = phone.replace(/\D/g, '');
+        if (phoneClean.length < 10) {
+            alert('WhatsApp inválido');
             return false;
         }
 
         if (!project) {
-            alert('Por favor, selecione um tipo de projeto.');
+            alert('Selecione um tipo de projeto');
             return false;
         }
 
@@ -132,52 +120,33 @@ export function initContactModal() {
     }
 
     /**
-     * Submissão do formulário
+     * Submit do formulário
      */
     form.addEventListener('submit', (e) => {
         e.preventDefault();
 
-        // Coleta dados do formulário
-        const formData = new FormData(form);
-        const data = Object.fromEntries(formData);
+        const formData = Object.fromEntries(new FormData(form));
+        
+        if (!validateForm(formData)) return;
 
-        // Valida dados
-        if (!validateForm(data)) {
-            return;
-        }
+        const btn = form.querySelector('.contact-form__submit');
+        const originalHTML = btn.innerHTML;
 
-        // Formata mensagem para WhatsApp
-        const whatsappMessage = formatWhatsAppMessage(data);
+        // Feedback
+        btn.disabled = true;
+        btn.innerHTML = '⏳ Abrindo...';
 
-        // Obtém botão de envio
-        const submitBtn = form.querySelector('.contact-form__submit');
-        const originalHTML = submitBtn.innerHTML;
-        const originalText = submitBtn.textContent;
-
-        // Feedback visual: Enviando
-        submitBtn.disabled = true;
-        submitBtn.innerHTML = '<span class="contact-form__submit-text">Abrindo WhatsApp...</span>';
-
-        // Abre WhatsApp após pequeno delay para melhor UX
         setTimeout(() => {
-            openWhatsApp(whatsappMessage);
-
-            // Feedback visual: Enviado
-            submitBtn.innerHTML = '<span class="contact-form__submit-text">✓ Sucesso!</span>';
-            submitBtn.style.background = 'linear-gradient(135deg, #16a34a 0%, #0d8a38 100%)';
-
-            // Reset do formulário e botão após 2 segundos
+            openWhatsApp(formatMessage(formData));
+            
+            btn.innerHTML = '✓ Pronto!';
+            
             setTimeout(() => {
                 form.reset();
-                submitBtn.innerHTML = originalHTML;
-                submitBtn.disabled = false;
-                submitBtn.style.background = '';
-                
-                // Fecha modal após 2 segundos
-                setTimeout(() => {
-                    closeModal();
-                }, 500);
-            }, 2000);
+                btn.innerHTML = originalHTML;
+                btn.disabled = false;
+                closeModal();
+            }, 1500);
         }, 300);
     });
 
@@ -185,120 +154,43 @@ export function initContactModal() {
      * Event Listeners
      */
 
-    // Botões que abrem o modal (links com href="#contato" ou atributo data-contact)
-    const contactTriggers = document.querySelectorAll('a[href="#contato"], button[data-contact]');
-    contactTriggers.forEach(trigger => {
-        trigger.addEventListener('click', (e) => {
+    // Abrir modal
+    document.querySelectorAll('a[href="#contato"], button[data-contact]').forEach(el => {
+        el.addEventListener('click', (e) => {
             e.preventDefault();
             openModal();
         });
     });
 
-    // Botão fechar
+    // Fechar modal
     closeBtn?.addEventListener('click', closeModal);
-
-    // Overlay (fechar ao clicar)
     overlay?.addEventListener('click', (e) => {
-        if (e.target === overlay) {
-            closeModal();
-        }
+        if (e.target === overlay) closeModal();
     });
 
-    // Fechar com ESC
+    // ESC para fechar
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && modal.classList.contains('open')) {
             closeModal();
         }
     });
 
-    /**
-     * Input Focus Behavior
-     * Remove mensagens de erro ao focar
-     */
-    form.querySelectorAll('input, select, textarea').forEach(input => {
-        input.addEventListener('focus', () => {
-            // Pode ser usado para remover mensagens de erro, se implementadas
-            input.classList.remove('error');
-        });
-
-        // Melhorar UX em mobile: permitir Enter para próximo campo
-        input.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter' && input.tagName !== 'TEXTAREA') {
-                e.preventDefault();
-                const inputs = Array.from(form.querySelectorAll('input, select, textarea'));
-                const currentIndex = inputs.indexOf(input);
-                if (currentIndex < inputs.length - 1) {
-                    inputs[currentIndex + 1].focus();
-                }
-            }
-        });
-    });
-
-    /**
-     * Previne envio duplicado
-     */
+    // Previne submit duplicado
     let isSubmitting = false;
-    form.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter' && e.ctrlKey) {
-            form.dispatchEvent(new Event('submit'));
-        }
-    });
-
-    // Melhorar submit para evitar duplicatas
-    const originalSubmitHandler = form.onsubmit;
-    form.addEventListener('submit', (e) => {
-        if (isSubmitting) {
-            e.preventDefault();
-            return;
-        }
+    form.addEventListener('submit', () => {
+        if (isSubmitting) return;
         isSubmitting = true;
-        setTimeout(() => {
-            isSubmitting = false;
-        }, 3000);
+        setTimeout(() => { isSubmitting = false; }, 3000);
     });
 
-    /**
-     * Mobile-specific improvements
-     */
-    if (window.matchMedia('(hover: none)').matches) {
-        // Touch device - remover animações de hover
-        form.classList.add('is-touch');
-    }
-
-    /**
-     * Viewport height fix para mobile (teclado virtual)
-     */
-    let originalHeight = window.innerHeight;
-    window.addEventListener('resize', () => {
-        const currentHeight = window.innerHeight;
-        const heightDifference = originalHeight - currentHeight;
-        
-        // Se altura mudou significativamente, teclado abriu
-        if (heightDifference > 100 && modal.classList.contains('open')) {
-            // Ajustar scroll
-            setTimeout(() => {
-                const activeElement = document.activeElement;
-                if (activeElement && activeElement.tagName !== 'HTML' && activeElement.tagName !== 'BODY') {
-                    activeElement.scrollIntoView({ block: 'nearest', behavior: 'auto' });
-                }
-            }, 100);
-        }
-    });
-
-    // Retorna funções públicas
-    return {
-        open: openModal,
-        close: closeModal,
-        isOpen: () => modal.classList.contains('open')
-    };
+    return { open: openModal, close: closeModal };
 }
 
-// Inicializa ao carregar
+// Inicializa
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initContactModal);
 } else {
     initContactModal();
 }
 
-// Exporta como global se necessário
 window.contactModal = initContactModal;
