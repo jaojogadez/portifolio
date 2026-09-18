@@ -1,0 +1,96 @@
+/* =========================================================
+   SISTEMA UNIFICADO DE BOTOES
+   Os componentes continuam controlando layout e tamanho.
+   ========================================================= */
+
+:root {
+    --btn-radius: 9999px;
+    --btn-gradient-primary: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-blue) 100%);
+    --btn-shine-color: rgba(255, 255, 255, 0.55);
+}
+
+.btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border-radius: var(--btn-radius);
+    border: 1px solid transparent;
+    font-family: var(--font-body);
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    overflow: hidden;
+    isolation: isolate;
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+        box-shadow 0.25s ease, background 0.25s ease,
+        border-color 0.25s ease, color 0.25s ease, filter 0.25s ease;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+}
+
+.btn:active {
+    transform: translateY(-1px);
+}
+
+.btn > * {
+    position: relative;
+    z-index: 2;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background: linear-gradient(115deg, transparent 40%, var(--btn-shine-color) 50%, transparent 60%);
+    background-size: 250% 100%;
+    background-position: 150% 0;
+    animation: btn-shine 4.5s ease-in-out infinite;
+}
+
+@keyframes btn-shine {
+    0% { background-position: 150% 0; }
+    35% { background-position: -50% 0; }
+    100% { background-position: -50% 0; }
+}
+
+.btn.btn--primary {
+    background: var(--btn-gradient-primary);
+    color: #ffffff;
+    box-shadow: var(--shadow-blue), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.btn.btn--primary:hover {
+    filter: brightness(1.08);
+    box-shadow: 0 10px 34px rgba(0, 98, 255, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.btn.btn--secondary {
+    background: var(--bg-card);
+    border-color: var(--border-subtle);
+    color: var(--text-main);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+}
+
+.btn.btn--secondary:hover {
+    border-color: rgba(59, 130, 246, 0.5);
+    background: rgba(59, 130, 246, 0.1);
+    color: var(--accent-blue);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .btn::before { animation: none; }
+
+    .btn,
+    .btn:hover,
+    .btn:active {
+        transition: none;
+        transform: none;
+    }
+}

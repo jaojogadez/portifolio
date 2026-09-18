@@ -239,7 +239,7 @@ export function initPortfolio() {
         currentProject().pages.forEach(p => {
             const btn = document.createElement('button');
             btn.type = 'button';
-            btn.className = 'portfolio__feat-btn' + (p.id === pageId ? ' is-active' : '');
+            btn.className = 'btn btn--secondary portfolio__feat-btn' + (p.id === pageId ? ' is-active' : '');
             btn.setAttribute('aria-label', p.name);
             btn.dataset.id = p.id;
             btn.innerHTML = `<svg viewBox="0 0 24 24">${ICONS[p.icon]}</svg>`;
@@ -278,7 +278,7 @@ export function initPortfolio() {
         PROJECTS.forEach((proj, i) => {
             const dot = document.createElement('button');
             dot.type = 'button';
-            dot.className = 'portfolio__dot' + (i === projectIndex ? ' is-active' : '');
+            dot.className = 'btn btn--secondary portfolio__dot' + (i === projectIndex ? ' is-active' : '');
             dot.setAttribute('aria-label', proj.name);
             dot.addEventListener('click', () => setProject(i));
             carDots.appendChild(dot);
