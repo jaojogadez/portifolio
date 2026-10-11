@@ -41,7 +41,7 @@
     z-index: 2;
 }
 
-.btn::before {
+.btn--primary::before {
     content: '';
     position: absolute;
     inset: 0;
