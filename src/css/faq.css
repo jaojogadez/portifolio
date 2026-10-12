@@ -31,7 +31,7 @@
 }
 
 .faq-title-area .highlight {
-  color: var(--text-muted, #a1a1aa);
+  color: var(--accent-blue, #5b8fd9);
 }
 
 .faq-control-area {
@@ -130,10 +130,10 @@
   transition: opacity 0.4s ease 0.1s, max-height 0.4s ease;
 }
 
-/* Estado Ativo (Selecionado) */
+/* Estado Ativo (Selecionado) — azul discreto */
 .faq-card.active {
-  background-color: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.28);
+  background-color: #1a3055;
+  border-color: rgba(91, 143, 217, 0.4);
   justify-content: flex-start; /* Move o conteúdo para o topo */
 }
 

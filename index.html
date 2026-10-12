@@ -173,6 +173,14 @@
           </li>
           <li>
             <a
+              href="#servicos"
+              class="navbar__nav-link"
+              id="nav-link-servicos"
+              >Serviços</a
+            >
+          </li>
+          <li>
+            <a
               href="#portfolio"
               class="navbar__nav-link"
               id="nav-link-portfolio"
@@ -233,6 +241,9 @@
       >
         <a href="#impact" class="navbar__nav-link active" id="mob-link-sobre"
           >Sobre</a
+        >
+        <a href="#servicos" class="navbar__nav-link" id="mob-link-servicos"
+          >Serviços</a
         >
         <a href="#portfolio" class="navbar__nav-link" id="mob-link-portfolio"
           >Portfólio</a
@@ -682,6 +693,182 @@
             </svg>
           </span>
         </a>
+      </div>
+    </section>
+
+    <!-- =============================================
+        Seção: Serviços (Accordion Gallery)
+    ============================================= -->
+    <section class="services-section" id="servicos">
+      <div class="services-container">
+        <div class="portfolio__header reveal">
+          <div class="portfolio__eyebrow">Nossos Serviços</div>
+          <div class="impact__head reveal">
+            <h2 class="impact__title">O que entregamos<span>para você</span></h2>
+          </div>
+          <p class="portfolio__subtitle">
+            Passando o mouse ou toque em cada painel para explorar as soluções
+            sob medida para o seu negócio.
+          </p>
+        </div>
+
+        <div
+          class="accordion-gallery reveal"
+          id="services-gallery"
+          role="list"
+          aria-label="Galeria de serviços"
+        >
+          <a
+            href="#contato"
+            class="ag-panel"
+            role="listitem"
+            tabindex="0"
+            aria-label="Landing Pages"
+            aria-current="true"
+          >
+            <span class="ag-panel__frame">
+              <span class="ag-panel__media">
+                <img
+                  src="src/assets/services/lading-pages.jpg"
+                  alt="Landing Pages"
+                  draggable="false"
+                  loading="lazy"
+                />
+              </span>
+              <span class="ag-panel__overlay" aria-hidden="true"></span>
+            </span>
+            <span class="ag-panel__hint" aria-hidden="true">Landing</span>
+            <span class="ag-panel__label" aria-hidden="true">
+              <span class="ag-panel__bar"></span>
+              <span class="ag-panel__copy">
+                <span class="ag-panel__text">Landing Pages</span>
+                <span class="ag-panel__desc"
+                  >Páginas de alta conversão para campanhas e lançamentos.</span
+                >
+              </span>
+            </span>
+          </a>
+
+          <a
+            href="#contato"
+            class="ag-panel"
+            role="listitem"
+            tabindex="0"
+            aria-label="Páginas Institucionais"
+          >
+            <span class="ag-panel__frame">
+              <span class="ag-panel__media">
+                <img
+                  src="src/assets/services/paginas-institucionais.jpg"
+                  alt="Páginas Institucionais"
+                  draggable="false"
+                  loading="lazy"
+                />
+              </span>
+              <span class="ag-panel__overlay" aria-hidden="true"></span>
+            </span>
+            <span class="ag-panel__hint" aria-hidden="true">Institucional</span>
+            <span class="ag-panel__label" aria-hidden="true">
+              <span class="ag-panel__bar"></span>
+              <span class="ag-panel__copy">
+                <span class="ag-panel__text">Páginas Institucionais</span>
+                <span class="ag-panel__desc"
+                  >Presença digital profissional alinhada à identidade da marca.</span
+                >
+              </span>
+            </span>
+          </a>
+
+          <a
+            href="#contato"
+            class="ag-panel ag-panel--active"
+            role="listitem"
+            tabindex="0"
+            aria-label="E-commerces"
+          >
+            <span class="ag-panel__frame">
+              <span class="ag-panel__media">
+                <img
+                  src="src/assets/services/ecommerces.jpg"
+                  alt="E-commerces"
+                  draggable="false"
+                  loading="lazy"
+                />
+              </span>
+              <span class="ag-panel__overlay" aria-hidden="true"></span>
+            </span>
+            <span class="ag-panel__hint" aria-hidden="true">E-commerce</span>
+            <span class="ag-panel__label" aria-hidden="true">
+              <span class="ag-panel__bar"></span>
+              <span class="ag-panel__copy">
+                <span class="ag-panel__text">E-commerces</span>
+                <span class="ag-panel__desc"
+                  >Lojas online modernas, seguras e prontas para vender.</span
+                >
+              </span>
+            </span>
+          </a>
+
+          <a
+            href="#contato"
+            class="ag-panel"
+            role="listitem"
+            tabindex="0"
+            aria-label="Sistemas Sob Medida"
+          >
+            <span class="ag-panel__frame">
+              <span class="ag-panel__media">
+                <img
+                  src="src/assets/services/sistemas-sob-medida.jpg"
+                  alt="Sistemas Sob Medida"
+                  draggable="false"
+                  loading="lazy"
+                />
+              </span>
+              <span class="ag-panel__overlay" aria-hidden="true"></span>
+            </span>
+            <span class="ag-panel__hint" aria-hidden="true">Sistemas</span>
+            <span class="ag-panel__label" aria-hidden="true">
+              <span class="ag-panel__bar"></span>
+              <span class="ag-panel__copy">
+                <span class="ag-panel__text">Sistemas Sob Medida</span>
+                <span class="ag-panel__desc"
+                  >Soluções web personalizadas para o fluxo do seu negócio.</span
+                >
+              </span>
+            </span>
+          </a>
+
+          <a
+            href="#contato"
+            class="ag-panel"
+            role="listitem"
+            tabindex="0"
+            aria-label="SEO"
+          >
+            <span class="ag-panel__frame">
+              <span class="ag-panel__media">
+                <img
+                  src="src/assets/services/seo.jpg"
+                  alt="SEO"
+                  draggable="false"
+                  loading="lazy"
+                />
+              </span>
+              <span class="ag-panel__overlay" aria-hidden="true"></span>
+            </span>
+            <span class="ag-panel__hint" aria-hidden="true">SEO</span>
+            <span class="ag-panel__label" aria-hidden="true">
+              <span class="ag-panel__bar"></span>
+              <span class="ag-panel__copy">
+                <span class="ag-panel__text">SEO</span>
+                <span class="ag-panel__desc"
+                  >Otimização para ranquear no Google e atrair clientes certos.</span
+                >
+              </span>
+            </span>
+          </a>
+        </div>
       </div>
     </section>
 
@@ -1226,8 +1413,8 @@
         <div class="site-footer__column">
           <h3>Navegação</h3>
           <a href="#home">Início</a>
-          <a href="#sobre">Sobre</a>
-          <a href="#servicos">Skills</a>
+          <a href="#sobre-mim">Sobre</a>
+          <a href="#servicos">Serviços</a>
           <a href="#portfolio">Projetos</a>
           <a href="#contato">Contato</a>
         </div>

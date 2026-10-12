@@ -84,7 +84,7 @@
 }
 
 .about-greeting .accent-name {
-    color: var(--text-main, #ffffff);
+    color: var(--accent-blue, #5b8fd9);
 }
 
 .about-text {
@@ -99,13 +99,13 @@
 }
 
 .about-text .accent {
-    color: var(--text-main, #ffffff);
+    color: var(--accent-blue, #5b8fd9);
     font-weight: 600;
 }
 
 /* --- Citação em Destaque --- */
 .about-quote {
-    border-left: 3px solid rgba(255, 255, 255, 0.35);
+    border-left: 3px solid var(--accent-blue, #5b8fd9);
     padding: 4px 0 4px 20px;
     margin: 28px 0;
     font-size: 1.15rem;
@@ -115,7 +115,7 @@
 }
 
 .about-quote .accent {
-    color: var(--text-main, #ffffff);
+    color: var(--accent-blue, #5b8fd9);
 }
 
 /* --- Checklist --- */

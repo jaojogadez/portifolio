@@ -43,7 +43,7 @@ export function initNavbar() {
 
     /* ── Active link via IntersectionObserver ── */
     // Adicionamos 'footer' à lista de elementos observados
-    const sections = document.querySelectorAll('#hero, #impact, #portfolio, #processo, #faq, #depoimentos, #contato, #servicos, #sobre, footer, #footer');
+    const sections = document.querySelectorAll('#hero, #impact, #portfolio, #processo, #faq, #depoimentos, #contato, #servicos, #sobre, #sobre-mim, footer, #footer');
     const allLinks = document.querySelectorAll('.navbar__nav-link');
 
     if (sections.length && allLinks.length) {

@@ -6,9 +6,9 @@
     /* Glassmorphism base */
 
     --primary-blue: #0062ff;
-    /* Action Blue (somente CTAs / botões) */
-    --accent-blue: #3b82f6;
-    /* Sky Blue (somente botões) */
+    /* Action Blue (CTAs / botões) */
+    --accent-blue: #5b8fd9;
+    /* Azul discreto (destaques de texto, hover, dados) */
 
     /* --- Tipografia --- */
     --text-main: #ffffff;

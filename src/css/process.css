@@ -69,11 +69,11 @@
 }
 
 .process-item--active .process-tags {
-    color: var(--text-main, #ffffff);
+    color: var(--accent-blue, #5b8fd9);
 }
 
 .process-item--active .process-number {
-    color: var(--text-main, #ffffff);
+    color: var(--accent-blue, #5b8fd9);
 }
 
 /* --- Números (01, 02...) --- */
@@ -88,7 +88,7 @@
 
 .process-item:hover .process-number,
 .process-item--active .process-number {
-    color: var(--text-main, #ffffff);
+    color: var(--accent-blue, #5b8fd9);
 }
 
 /* --- Título do Passo & Tags --- */
@@ -130,7 +130,7 @@
 
 .process-item:hover .process-tags,
 .process-item--active .process-tags {
-    color: var(--text-main, #ffffff);
+    color: var(--accent-blue, #5b8fd9);
 }
 
 .process-details p {
