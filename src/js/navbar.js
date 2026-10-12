@@ -39,6 +39,17 @@ export function initNavbar() {
         wrapper.classList.remove('menu-open');
     }
 
+    /* ── Fechar ao clicar fora / Esc ── */
+    document.addEventListener('click', (e) => {
+        if (wrapper.classList.contains('menu-open') && !wrapper.contains(e.target)) {
+            closeMenu();
+        }
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeMenu();
+    });
+
     /* ── Active link via IntersectionObserver ── */
     // Adicionamos 'footer' à lista de elementos observados
     const sections = document.querySelectorAll('#hero, #impact, #portfolio, #processo, #faq, #depoimentos, #contato, #servicos, #sobre, #sobre-mim, footer, #footer');

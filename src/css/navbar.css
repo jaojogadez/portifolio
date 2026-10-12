@@ -238,40 +238,88 @@
 
 /* Tablets / Mobile */
 @media (max-width: 900px) {
-    .navbar__nav {
-        display: none;
-    }
-
-    .navbar__actions {
+    /* Esconde apenas os itens da navbar desktop (não os do drawer) */
+    .navbar > .navbar__nav,
+    .navbar > .navbar__actions {
         display: none;
     }
 
     .navbar__hamburger {
         display: flex;
+        width: 52px;
+        height: 52px;
+        border-radius: 14px;
+        padding: 0;
+    }
+
+    /* Estado fechado: botão circular flutuante à direita */
+    .navbar-wrapper,
+    .navbar-wrapper.visible {
+        left: auto;
+        right: 16px;
+        width: 52px;
+        max-width: none;
+        border-radius: 14px;
+        overflow: hidden;
+        transition:
+            top           0.35s ease,
+            width         0.4s cubic-bezier(0.16, 1, 0.3, 1),
+            border-radius 0.4s ease,
+            background    0.35s ease,
+            box-shadow    0.35s ease,
+            opacity       0.45s cubic-bezier(0.16, 1, 0.3, 1),
+            transform     0.45s cubic-bezier(0.16, 1, 0.3, 1),
+            visibility    0s 0.45s;
     }
 
     .navbar-wrapper {
-        border-radius: 24px;
+        transform: translateY(-16px);
     }
 
+    .navbar-wrapper.visible {
+        transform: translateY(0);
+        transition-delay: 0s, 0s, 0s, 0s, 0s, 0s, 0s, 0s; /* visibility aparece na hora */
+    }
+
+    .navbar {
+        height: 52px;
+        padding: 0;
+        justify-content: center;
+    }
+
+    .navbar__logo {
+        display: none;
+    }
+
+    /* Estado aberto: expande e mostra o restante */
     .navbar-wrapper.menu-open {
-        border-radius: 20px;
+        width: calc(100% - 32px);
+        border-radius: 14px;
     }
 
+    .navbar-wrapper.menu-open .navbar {
+        padding: 0 0 0 20px;
+        justify-content: space-between;
+    }
+
+    .navbar-wrapper.menu-open .navbar__logo {
+        display: flex;
+    }
 }
 
 /* Mobile pequeno */
 @media (max-width: 480px) {
-    .navbar-wrapper {
-        width: calc(100% - 24px);
+    .navbar-wrapper,
+    .navbar-wrapper.visible {
         top: 12px;
+        right: 12px;
     }
 
-    .navbar {
-        padding: 12px 18px;
+    .navbar-wrapper.menu-open {
+        width: calc(100% - 24px);
     }
 
     .navbar__logo-img {
-        height: 42px; 
+        height: 42px;
     }
 }
