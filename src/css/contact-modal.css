@@ -12,12 +12,8 @@
     --input-bg: rgba(255, 255, 255, 0.02);
     --input-border: rgba(255, 255, 255, 0.06);
     --input-focus: rgba(255, 255, 255, 0.06);
-    --primary-blue: #0062ff;
-    --accent-blue: #3b82f6;
     --success-green: #25d366;
-    --text-main: #ffffff;
     --text-secondary: #e4e4e7;
-    --text-muted: #a1a1aa;
 }
 
 /* ─────────────────────────────────────────────
@@ -446,7 +442,7 @@
         opacity: 1 !important;
     }
 
-    * {
+    .contact-modal * {
         transition: none !important;
     }
 }

@@ -61,20 +61,6 @@
     background: rgba(255, 255, 255, 0.03);
 }
 
-/* Removemos o :hover genérico para controle via classe e responsividade */
-.process-item--active .process-details {
-    max-height: 250px;
-    opacity: 1;
-    margin-top: 20px;
-}
-
-.process-item--active .process-tags {
-    color: var(--accent-blue, #5b8fd9);
-}
-
-.process-item--active .process-number {
-    color: var(--accent-blue, #5b8fd9);
-}
 
 /* --- Números (01, 02...) --- */
 .process-number {

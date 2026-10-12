@@ -59,7 +59,6 @@
   height: 100%;
   max-height: 65vh;
   object-fit: contain;
-  filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.01));
 }
 
 .impact__phone--center {
@@ -175,21 +174,7 @@
   /* 0deg natural */
 }
 
-/* Animação Normal das Copys */
-.reveal {
-  opacity: 0;
-  transform: translateY(20px);
-  /* movimenta menos para aparecer mais rápido */
-  will-change: transform, opacity;
-  transition:
-    opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-}
 
-.reveal.revealed {
-  opacity: 1;
-  transform: translateY(0);
-}
 
 /* =========================================
    COMPARAÇÃO E GRÁFICOS (STATS)
@@ -527,9 +512,6 @@
     max-height: 50vh;
   }
 
-  .impact__phone--center {
-    transform: translate(-50%, -50%) scale(1);
-  }
 
   .reveal-phones .impact__phone--left,
   .reveal-phones .impact__phone--right {

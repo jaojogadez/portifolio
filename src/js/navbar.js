@@ -5,21 +5,19 @@ export function initNavbar() {
 
     if (!wrapper || !hamburger || !mobileMenu) return;
 
-    /* ── Visibilidade: aparece na metade do hero ── */
+    /* ── Scroll: visibilidade e estado .scrolled em listener unificado ── */
     const heroSection = document.getElementById('hero');
-    if (heroSection) {
-        const checkNavbarVisibility = () => {
+    const updateNavbarScroll = () => {
+        const scrollY = window.scrollY;
+        if (heroSection) {
             const halfHero = heroSection.offsetHeight * 0.5;
-            wrapper.classList.toggle('visible', window.scrollY > halfHero);
-        };
-        window.addEventListener('scroll', checkNavbarVisibility, { passive: true });
-        checkNavbarVisibility();
-    }
+            wrapper.classList.toggle('visible', scrollY > halfHero);
+        }
+        wrapper.classList.toggle('scrolled', scrollY > 30);
+    };
+    window.addEventListener('scroll', updateNavbarScroll, { passive: true });
+    updateNavbarScroll();
 
-    /* ── Scroll: adiciona .scrolled após 30px ── */
-    window.addEventListener('scroll', () => {
-        wrapper.classList.toggle('scrolled', window.scrollY > 30);
-    }, { passive: true });
 
     /* ── Hamburger toggle ── */
     hamburger.addEventListener('click', () => {

@@ -150,27 +150,11 @@
 }
 
 .navbar__btn-primary {
-    display: inline-flex;
-    align-items: center;
     padding: 9px 20px;
-    border-radius: 9999px;
-    font-family: var(--font-body);
     font-size: 0.875rem;
-    font-weight: 600;
-    color: #fff;
-    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-blue) 100%);
-    border: none;
-    cursor: pointer;
-    text-decoration: none;
-    box-shadow: var(--shadow-blue);
-    transition: transform 0.2s ease, filter 0.2s ease, box-shadow 0.2s ease;
+    white-space: nowrap;
 }
 
-.navbar__btn-primary:hover {
-    transform: translateY(-1px);
-    filter: brightness(1.12);
-    box-shadow: 0 6px 28px rgba(0, 98, 255, 0.45);
-}
 
 /* --- Hamburger (Mobile) --- */
 .navbar__hamburger {
