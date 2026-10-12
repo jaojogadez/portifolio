@@ -4,7 +4,7 @@
 
 .faq-section {
   padding: 80px 5%;
-  background-color: var(--bg-deep, #0a0e17);
+  background-color: var(--bg-deep, #050505);
   color: var(--text-main, #ffffff);
   overflow: hidden;
 }
@@ -31,7 +31,7 @@
 }
 
 .faq-title-area .highlight {
-  color: var(--primary-blue, #1d4ed8);
+  color: var(--text-muted, #a1a1aa);
 }
 
 .faq-control-area {
@@ -132,8 +132,8 @@
 
 /* Estado Ativo (Selecionado) */
 .faq-card.active {
-  background-color: var(--primary-blue, #1d4ed8);
-  border-color: var(--primary-blue, #1d4ed8);
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.28);
   justify-content: flex-start; /* Move o conteúdo para o topo */
 }
 

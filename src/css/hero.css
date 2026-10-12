@@ -19,19 +19,19 @@
    2. AMBIENT LIGHT — orbs de fundo para profundidade
 ───────────────────────────────────────────── */
 
-/* Orb central azul — "holofote" atrás da imagem */
+/* Orb central neutro — profundidade sutil atrás da imagem */
 .hero__orb-main {
     position: absolute;
     inset: 0;
     background: radial-gradient(ellipse 75% 60% at 50% 55%,
-        rgba(0, 98, 255, 0.14) 0%,
-        rgba(0, 98, 255, 0.05) 40%,
+        rgba(255, 255, 255, 0.05) 0%,
+        rgba(255, 255, 255, 0.015) 40%,
         transparent 70%);
     z-index: 0;
     pointer-events: none;
 }
 
-/* Orb lateral esquerdo — ciano */
+/* Orb lateral esquerdo */
 .hero__orb-left {
     position: absolute;
     width: 500px;
@@ -39,13 +39,13 @@
     left: -160px;
     top: 10%;
     background: radial-gradient(circle,
-        rgba(56, 189, 248, 0.07) 0%,
+        rgba(255, 255, 255, 0.03) 0%,
         transparent 65%);
     z-index: 0;
     pointer-events: none;
 }
 
-/* Orb lateral direito — roxo/índigo */
+/* Orb lateral direito */
 .hero__orb-right {
     position: absolute;
     width: 420px;
@@ -53,7 +53,7 @@
     right: -100px;
     bottom: 15%;
     background: radial-gradient(circle,
-        rgba(99, 102, 241, 0.08) 0%,
+        rgba(255, 255, 255, 0.03) 0%,
         transparent 65%);
     z-index: 0;
     pointer-events: none;
@@ -187,7 +187,7 @@
     width: 70%;
     height: 120px;
     background: radial-gradient(ellipse,
-        rgba(0, 98, 255, 0.30) 0%,
+        rgba(255, 255, 255, 0.12) 0%,
         transparent 70%);
     filter: blur(30px);
     z-index: 0;
@@ -254,9 +254,9 @@
     /* Gradiente ascendente — cobre a base da imagem com suavidade */
     background: linear-gradient(to top,
         var(--bg-deep) 0%,
-        rgba(11, 14, 20, 0.97) 25%,
-        rgba(11, 14, 20, 0.75) 55%,
-        rgba(11, 14, 20, 0.2) 80%,
+        rgba(5, 5, 5, 0.97) 25%,
+        rgba(5, 5, 5, 0.75) 55%,
+        rgba(5, 5, 5, 0.2) 80%,
         transparent 100%);
     /* Sobe bastante para a copy não ficar colada ao fundo */
     margin-top: -320px;
@@ -277,12 +277,12 @@
     gap: 6px;
     padding: 5px 12px 5px 8px;
     border-radius: 9999px;
-    background: rgba(0, 98, 255, 0.12);
-    border: 1px solid rgba(0, 98, 255, 0.30);
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.18);
     font-family: var(--font-body);
     font-size: 0.75rem;
     font-weight: 600;
-    color: var(--accent-blue);
+    color: var(--text-muted);
     letter-spacing: 0.04em;
     text-transform: uppercase;
     margin-bottom: 18px;
@@ -292,8 +292,8 @@
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background: var(--accent-blue);
-    box-shadow: 0 0 6px var(--accent-blue);
+    background: #ffffff;
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.5);
     animation: blink 2s ease-in-out infinite;
 }
 
@@ -543,8 +543,8 @@
         background: linear-gradient(to top,
             var(--bg-deep) 0%,
             var(--bg-deep) 30%,
-            rgba(11, 14, 20, 0.90) 65%,
-            rgba(11, 14, 20, 0.4) 85%,
+            rgba(5, 5, 5, 0.90) 65%,
+            rgba(5, 5, 5, 0.4) 85%,
             transparent 100%);
     }
 

@@ -28,7 +28,7 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  color: var(--accent-blue);
+  color: var(--text-muted);
   font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.12em;
@@ -41,7 +41,7 @@
   content: "";
   width: 16px;
   height: 1px;
-  background: var(--accent-blue);
+  background: rgba(255, 255, 255, 0.35);
   opacity: 0.5;
 }
 
@@ -55,7 +55,7 @@
 }
 
 .portfolio__title-accent {
-  color: var(--accent-blue);
+  color: var(--text-muted);
 }
 
 .portfolio__title-main {
@@ -176,7 +176,7 @@
 }
 
 .portfolio__feat-btn:hover {
-  border-color: rgba(59, 130, 246, 0.4);
+  border-color: rgba(255, 255, 255, 0.35);
   color: var(--text-main);
   transform: scale(1.05);
 }
@@ -206,7 +206,7 @@
 }
 
 .portfolio__connectors path.is-active {
-  stroke: var(--accent-blue);
+  stroke: rgba(255, 255, 255, 0.45);
 }
 
 .portfolio__device {
@@ -243,7 +243,7 @@
 
 .portfolio__screen {
   width: 100%;
-  background: #060811;
+  background: #050505;
   border-radius: 12px;
   overflow: hidden;
   position: relative;
@@ -375,7 +375,7 @@
 }
 
 .portfolio__car-arrow:hover {
-  border-color: rgba(59, 130, 246, 0.4);
+  border-color: rgba(255, 255, 255, 0.35);
   color: var(--text-main);
 }
 
@@ -436,9 +436,9 @@
 }
 
 .portfolio__car-link:hover {
-  border-color: rgba(59, 130, 246, 0.5);
-  background: rgba(59, 130, 246, 0.1);
-  color: var(--accent-blue);
+  border-color: rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-main);
 }
 
 .portfolio__car-link.is-disabled {
@@ -469,7 +469,7 @@
 }
 
 .portfolio__dot.is-active {
-  background: var(--accent-blue);
+  background: #ffffff;
   width: 20px;
   border-radius: 3px;
 }
@@ -509,7 +509,7 @@
 .portfolio .tabs .tab-active {
   color: var(--text-main);
   padding-bottom: 8px;
-  border-bottom: 2px solid var(--accent-blue);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.5);
 }
 
 .portfolio .tabs span:not(.tab-active) {
@@ -595,7 +595,7 @@
 
 .portfolio .bar {
   flex: 1;
-  background: linear-gradient(180deg, var(--accent-blue), var(--primary-blue));
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.15));
   border-radius: 5px 5px 0 0;
   opacity: 0.85;
 }
@@ -609,7 +609,7 @@
   height: 84px;
   border-radius: 50%;
   background: conic-gradient(
-    var(--accent-blue) 0deg 252deg,
+    rgba(255, 255, 255, 0.7) 0deg 252deg,
     rgba(255, 255, 255, 0.08) 252deg 360deg
   );
   display: flex;
@@ -622,7 +622,7 @@
   width: 64px;
   height: 64px;
   border-radius: 50%;
-  background: #060811;
+  background: #050505;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -642,7 +642,7 @@
   width: 100%;
   height: 460px;
   border: 0;
-  background: #060811;
+  background: #050505;
 }
 
 .portfolio[data-device="app"] .portfolio__iframe {

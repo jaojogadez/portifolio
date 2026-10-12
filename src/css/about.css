@@ -27,8 +27,9 @@
 }
 
 .about-title em {
-    color: var(--accent-blue, #00d2ff);
+    color: var(--text-main, #ffffff);
     font-style: italic;
+    opacity: 0.85;
 }
 
 /* --- Grid Principal --- */
@@ -56,7 +57,7 @@
     aspect-ratio: 4 / 5;
     object-fit: cover;
     border-radius: 24px;
-    border: 1px solid rgba(0, 210, 255, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.12);
     position: relative;
     z-index: 2;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
@@ -67,7 +68,7 @@
     position: absolute;
     inset: -12px;
     border-radius: 28px;
-    background: radial-gradient(circle, rgba(0, 210, 255, 0.25) 0%, rgba(0, 98, 255, 0.05) 70%, transparent 100%);
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 70%, transparent 100%);
     z-index: 1;
     filter: blur(18px);
 }
@@ -83,7 +84,7 @@
 }
 
 .about-greeting .accent-name {
-    color: var(--accent-blue, #00d2ff);
+    color: var(--text-main, #ffffff);
 }
 
 .about-text {
@@ -98,13 +99,13 @@
 }
 
 .about-text .accent {
-    color: var(--accent-blue, #00d2ff);
+    color: var(--text-main, #ffffff);
     font-weight: 600;
 }
 
 /* --- Citação em Destaque --- */
 .about-quote {
-    border-left: 3px solid var(--accent-blue, #00d2ff);
+    border-left: 3px solid rgba(255, 255, 255, 0.35);
     padding: 4px 0 4px 20px;
     margin: 28px 0;
     font-size: 1.15rem;
@@ -114,7 +115,7 @@
 }
 
 .about-quote .accent {
-    color: var(--accent-blue, #00d2ff);
+    color: var(--text-main, #ffffff);
 }
 
 /* --- Checklist --- */
@@ -143,11 +144,11 @@
     width: 28px;
     height: 28px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #0062ff 0%, #00d2ff 100%);
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.25);
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 12px rgba(0, 98, 255, 0.3);
 }
 
 .check-icon svg {

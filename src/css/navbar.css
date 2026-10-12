@@ -13,7 +13,7 @@
     z-index: 1000;
 
     /* Efeito "ilha flutuante" */
-    background: rgba(11, 14, 20, 0.55);
+    background: rgba(5, 5, 5, 0.65);
     backdrop-filter: var(--glass-blur);
     -webkit-backdrop-filter: var(--glass-blur);
     border: 1px solid var(--border-subtle);
@@ -52,7 +52,7 @@
 /* Estado ao rolar (mais fechado / escurecido) */
 .navbar-wrapper.scrolled {
     top: 12px;
-    background: rgba(11, 14, 20, 0.85);
+    background: rgba(5, 5, 5, 0.9);
     box-shadow: 0 8px 40px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255,255,255,0.06);
 }
 

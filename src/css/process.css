@@ -27,9 +27,9 @@
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    color: var(--accent-blue, #00d2ff);
-    background: rgba(0, 210, 255, 0.08);
-    border: 1px solid rgba(0, 210, 255, 0.2);
+    color: var(--text-muted, #a1a1aa);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     margin-bottom: 16px;
 }
 
@@ -69,11 +69,11 @@
 }
 
 .process-item--active .process-tags {
-    color: var(--accent-blue, #00d2ff);
+    color: var(--text-main, #ffffff);
 }
 
 .process-item--active .process-number {
-    color: var(--accent-blue, #00d2ff);
+    color: var(--text-main, #ffffff);
 }
 
 /* --- Números (01, 02...) --- */
@@ -88,7 +88,7 @@
 
 .process-item:hover .process-number,
 .process-item--active .process-number {
-    color: var(--accent-blue, #00d2ff);
+    color: var(--text-main, #ffffff);
 }
 
 /* --- Título do Passo & Tags --- */
@@ -130,7 +130,7 @@
 
 .process-item:hover .process-tags,
 .process-item--active .process-tags {
-    color: var(--accent-blue, #00d2ff);
+    color: var(--text-main, #ffffff);
 }
 
 .process-details p {
@@ -160,7 +160,7 @@
 
 .process-btn:hover {
     background: #ffffff;
-    color: #0b0e14;
+    color: #050505;
     border-color: #ffffff;
 }
 

@@ -20,20 +20,30 @@ const ICONS = {
 };
 
 const IMG = {
-  web1: "./src/assets/projects/garra-web-01-cumprido.png",
-  web2: "./src/assets/projects/garra-web-02-cumprido.png",
-  web3: "./src/assets/projects/garra-web-03-cumprido.png",
-  web4: "./src/assets/projects/garra-web-04-cumprido.png",
-  app1: "./src/assets/projects/garra-mobile-01-cumprido.png",
+  web1: "./src/assets/projects/garra-web-01-cumprido.webp",
+  web2: "./src/assets/projects/garra-web-02-cumprido.webp",
+  web3: "./src/assets/projects/garra-web-03-cumprido.webp",
+  web4: "./src/assets/projects/garra-web-04-cumprido.webp",
+  app1: "./src/assets/projects/garra-mobile-01-cumprido.webp",
   app2: "./src/assets/projects/garra-mobile-02-cumprido.png",
-  app3: "./src/assets/projects/garra-mobile-03-cumprido.png",
-  app4: "./src/assets/projects/garra-mobile-04-cumprido.png",
+  app3: "./src/assets/projects/garra-mobile-03-cumprido.webp",
+  app4: "./src/assets/projects/garra-mobile-04-cumprido.webp",
 };
+
 
 function imageScreen(src, alt) {
   const abs = new URL(src, document.baseURI).href;
-  return `<img src="${abs}" alt="${alt || ""}" style="width:100%;height:auto;display:block;">`;
+
+  return `
+    <img
+      src="${abs}"
+      alt="${alt || ""}"
+      decoding="async"
+      style="width:100%;height:auto;display:block;"
+    >
+  `;
 }
+
 
 function tableScreen(title, items, cta) {
   const rows = items
@@ -416,7 +426,7 @@ const PREVIEW_STYLE = `
         height: auto !important;
         min-height: 0 !important;
         display: block !important;
-        background: #060811 !important;
+        background: #050505 !important;
     }
     .portfolio {
         padding: 0 !important;

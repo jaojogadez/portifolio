@@ -98,7 +98,7 @@
 }
 
 .site-footer__column a:hover {
-    color: var(--accent-blue);
+    color: var(--text-main);
     transform: translateX(3px);
 }
 

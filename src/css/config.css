@@ -1,21 +1,21 @@
 :root {
     /* --- Cores Primárias --- */
-    --bg-deep: #0b0e14;
-    /* Fundo quase preto (Premium) */
-    --bg-card: rgba(255, 255, 255, 0.03);
+    --bg-deep: #050505;
+    /* Fundo preto minimalista */
+    --bg-card: rgba(255, 255, 255, 0.04);
     /* Glassmorphism base */
 
     --primary-blue: #0062ff;
-    /* Action Blue (CTAs) */
+    /* Action Blue (somente CTAs / botões) */
     --accent-blue: #3b82f6;
-    /* Sky Blue (Gradients/Links) */
+    /* Sky Blue (somente botões) */
 
     /* --- Tipografia --- */
     --text-main: #ffffff;
     /* Títulos e Destaques */
-    --text-muted: #94a3b8;
+    --text-muted: #a1a1aa;
     /* Parágrafos e Apoio */
-    --text-dim: #475569;
+    --text-dim: #52525b;
     /* Rodapés e Detalhes */
 
     /* --- Superfícies e Bordas --- */
@@ -27,7 +27,7 @@
     /* --- Efeitos --- */
     --glass-blur: blur(12px);
     --shadow-blue: 0 4px 20px rgba(0, 98, 255, 0.3);
-    --glow-radial: radial-gradient(circle at center, rgba(0, 98, 255, 0.15) 0%, transparent 70%);
+    --glow-radial: radial-gradient(circle at center, rgba(255, 255, 255, 0.06) 0%, transparent 70%);
 
     /* --- Fontes (Recomendação: Importar no HTML/Google Fonts) --- */
     --font-display: 'Archivo Black', sans-serif;
