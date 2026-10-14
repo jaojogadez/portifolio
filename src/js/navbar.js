@@ -1,4 +1,32 @@
+/* ── Alternância de tema (claro/escuro) ──
+   O tema inicial é aplicado por um script inline no <head> (evita flash).
+   Aqui só ligamos os botões .theme-toggle (desktop e drawer mobile). */
+   function initThemeToggle() {
+    const root = document.documentElement;
+    const buttons = document.querySelectorAll('.theme-toggle');
+    if (!buttons.length) return;
+
+    const sync = () => {
+        const isLight = root.dataset.theme === 'light';
+        buttons.forEach(b => b.setAttribute('aria-pressed', String(isLight)));
+    };
+
+    sync();
+
+    buttons.forEach(b =>
+        b.addEventListener('click', () => {
+            const next = root.dataset.theme === 'light' ? 'dark' : 'light';
+            root.dataset.theme = next;
+            try { localStorage.setItem('theme', next); } catch (e) { /* storage indisponível */ }
+            sync();
+        })
+    );
+}
+
 export function initNavbar() {
+    /* Antes do guard: o tema funciona mesmo se a navbar não existir na página */
+    initThemeToggle();
+
     const wrapper = document.getElementById('navbar');
     const hamburger = document.getElementById('navbar-hamburger');
     const mobileMenu = document.getElementById('navbar-mobile-menu');

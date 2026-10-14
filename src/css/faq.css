@@ -2,166 +2,172 @@
    Módulo CSS: faq.css 
    ============================================ */
 
-.faq-section {
-  padding: 80px 5%;
-  background-color: var(--bg-deep, #050505);
-  color: var(--text-main, #ffffff);
-  overflow: hidden;
-}
-
-.faq-container {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-/* Header Grid */
-.faq-header {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 48px;
-  gap: 32px;
-}
-
-.faq-title-area h2 {
-  font-family: var(--font-display, 'Archivo Black', sans-serif);
-  font-size: clamp(2rem, 4vw, 3.2rem);
-  line-height: 1.1;
-  margin: 0;
-  text-transform: uppercase;
-}
-
-.faq-title-area .highlight {
-  color: var(--accent-blue, #5b8fd9);
-}
-
-.faq-control-area {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 20px;
-  max-width: 360px;
-}
-
-.faq-description {
-  font-size: 0.95rem;
-  color: rgba(255, 255, 255, 0.7);
-  margin: 0;
-  text-align: right;
-  line-height: 1.5;
-}
-
-.faq-nav-buttons {
-  display: flex;
-  gap: 12px;
-}
-
-.faq-btn {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  background: transparent;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.faq-btn:hover:not(:disabled) {
-  background-color: #ffffff;
-  color: #000000;
-  border-color: #ffffff;
-}
-
-.faq-btn:disabled {
-  opacity: 0.3;
-  cursor: not-allowed;
-}
-
-/* Carrossel de Cards */
-.faq-carousel-wrapper {
-  width: 100%;
-  overflow: hidden;
-  padding: 10px 0;
-}
-
-.faq-carousel {
-  display: flex;
-  gap: 24px;
-  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-/* Base dos Cards Inativos */
-.faq-card {
-  flex: 0 0 320px;
-  height: 380px;
-  border-radius: 24px;
-  padding: 32px 28px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end; /* Mantém o título na parte inferior quando inativo */
-  transition: background-color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
-  cursor: pointer;
-  box-sizing: border-box;
-}
-
-.faq-card-title {
-  font-size: 1.25rem;
-  font-weight: 600;
-  line-height: 1.35;
-  margin: 0;
-  color: rgba(255, 255, 255, 0.75);
-  text-transform: none;
-  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), color 0.4s ease, font-size 0.4s ease;
-}
-
-.faq-card-answer {
-  font-size: 0.9rem;
-  line-height: 1.6;
-  color: rgba(255, 255, 255, 0.9);
-  margin-top: 16px;
-  opacity: 0;
-  max-height: 0;
-  overflow: hidden;
-  transition: opacity 0.4s ease 0.1s, max-height 0.4s ease;
-}
-
-/* Estado Ativo (Selecionado) — azul discreto */
-.faq-card.active {
-  background-color: #1a3055;
-  border-color: rgba(91, 143, 217, 0.4);
-  justify-content: flex-start; /* Move o conteúdo para o topo */
-}
-
-.faq-card.active .faq-card-title {
-  color: #ffffff;
-  font-size: 1.35rem;
-}
-
-.faq-card.active .faq-card-answer {
-  opacity: 1;
-  max-height: 200px;
-}
-
-/* Responsividade */
-@media (max-width: 768px) {
+   .faq-section {
+    padding: 80px 5%;
+    background-color: var(--bg-deep, #050505);
+    color: var(--text-main, #ffffff);
+    overflow: hidden;
+  }
+  
+  .faq-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  /* Header Grid */
   .faq-header {
-    flex-direction: column;
-    align-items: flex-start;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 48px;
+    gap: 32px;
   }
+  
+  .faq-title-area h2 {
+    font-family: var(--font-display, 'Archivo Black', sans-serif);
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    line-height: 1.1;
+    margin: 0;
+    text-transform: uppercase;
+  }
+  
+  .faq-title-area .highlight {
+    color: var(--accent-blue, #5b8fd9);
+  }
+  
   .faq-control-area {
-    align-items: flex-start;
-    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 20px;
+    max-width: 360px;
   }
+  
   .faq-description {
-    text-align: left;
+    font-size: 0.95rem;
+    color: var(--fg-a70);
+    margin: 0;
+    text-align: right;
+    line-height: 1.5;
   }
+  
+  .faq-nav-buttons {
+    display: flex;
+    gap: 12px;
+  }
+  
+  .faq-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid var(--fg-a20);
+    background: transparent;
+    color: var(--text-main);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .faq-btn:hover:not(:disabled) {
+    background-color: var(--text-main);
+    color: var(--bg-deep);
+    border-color: var(--text-main);
+  }
+  
+  .faq-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+  
+  /* Carrossel de Cards */
+  .faq-carousel-wrapper {
+    width: 100%;
+    padding: 10px 0;
+    overflow: hidden; /* fallback p/ navegadores sem suporte a overflow: clip */
+    /* Corta só na horizontal (carrossel). Na vertical deixa a sombra dos cards
+       vazar livremente, senão ela é cortada e aparece uma linha na base. */
+    overflow-x: clip;
+    overflow-y: visible;
+  }
+  
+  .faq-carousel {
+    display: flex;
+    gap: 24px;
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+  
+  /* Base dos Cards Inativos */
   .faq-card {
-    flex: 0 0 82vw;
-    height: 360px;
+    flex: 0 0 320px;
+    height: 380px;
+    border-radius: 24px;
+    padding: 32px 28px;
+    background: var(--faq-card-bg);
+    border: 1px solid var(--faq-card-border);
+    box-shadow: var(--shadow-card);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Mantém o título na parte inferior quando inativo */
+    transition: background-color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+    cursor: pointer;
+    box-sizing: border-box;
   }
-}
+  
+  .faq-card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.35;
+    margin: 0;
+    color: var(--fg-a75);
+    text-transform: none;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), color 0.4s ease, font-size 0.4s ease;
+  }
+  
+  .faq-card-answer {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--fg-a90);
+    margin-top: 16px;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 0.4s ease 0.1s, max-height 0.4s ease;
+  }
+  
+  /* Estado Ativo (Selecionado) — azul discreto */
+  .faq-card.active {
+    background-color: var(--faq-active-bg);
+    border-color: rgba(var(--accent-rgb), 0.4);
+    box-shadow: var(--faq-active-shadow);
+    justify-content: flex-start; /* Move o conteúdo para o topo */
+  }
+  
+  .faq-card.active .faq-card-title {
+    color: var(--text-main);
+    font-size: 1.35rem;
+  }
+  
+  .faq-card.active .faq-card-answer {
+    opacity: 1;
+    max-height: 200px;
+  }
+  
+  /* Responsividade */
+  @media (max-width: 768px) {
+    .faq-header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .faq-control-area {
+      align-items: flex-start;
+      max-width: 100%;
+    }
+    .faq-description {
+      text-align: left;
+    }
+    .faq-card {
+      flex: 0 0 82vw;
+      height: 360px;
+    }
+  }

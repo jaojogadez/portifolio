@@ -2,7 +2,7 @@
    Módulo CSS: process.css
    ============================================ */
 
-.process-section {
+   .process-section {
     padding: 100px 24px;
     position: relative;
     background: transparent;
@@ -28,8 +28,8 @@
     text-transform: uppercase;
     letter-spacing: 0.05em;
     color: var(--text-muted, #a1a1aa);
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: var(--fg-a05);
+    border: 1px solid var(--fg-a15);
     margin-bottom: 16px;
 }
 
@@ -41,14 +41,14 @@
 
 /* --- Lista & Linhas Divisórias --- */
 .process-list {
-    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    border-top: 1px solid var(--fg-a12);
 }
 
 .process-item {
     display: grid;
     grid-template-columns: 80px 1fr;
     padding: 36px 32px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    border-bottom: 1px solid var(--fg-a12);
     background: transparent;
     cursor: pointer;
     transition: background 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease;
@@ -58,7 +58,7 @@
 /* Destaque no Hover e Item Ativo */
 .process-item:hover,
 .process-item--active {
-    background: rgba(255, 255, 255, 0.03);
+    background: var(--fg-a03);
 }
 
 
@@ -135,9 +135,9 @@
     border-radius: 9999px;
     font-size: 0.875rem;
     font-weight: 600;
-    color: #ffffff;
+    color: var(--text-main);
     background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.25);
+    border: 1px solid var(--fg-a25);
     text-decoration: none;
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -145,9 +145,9 @@
 }
 
 .process-btn:hover {
-    background: #ffffff;
-    color: #050505;
-    border-color: #ffffff;
+    background: var(--text-main);
+    color: var(--bg-deep);
+    border-color: var(--text-main);
 }
 
 /* --- Responsividade --- */

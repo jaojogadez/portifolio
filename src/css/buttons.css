@@ -3,11 +3,37 @@
    Os componentes continuam controlando layout e tamanho.
    ========================================================= */
 
-:root {
+   :root {
     --btn-radius: 9999px;
     --btn-gradient-primary: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-blue) 100%);
     --btn-shine-color: rgba(255, 255, 255, 0.55);
 }
+
+.theme-toggle {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    border: 1px solid var(--border-subtle);
+    background: var(--bg-card);
+    color: var(--text-muted);
+    box-shadow: var(--shadow-card);
+    cursor: pointer;
+    transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.theme-toggle:hover {
+    color: var(--text-main);
+    border-color: var(--fg-a35);
+}
+
+/* Escuro: mostra o sol (clicar → claro). Claro: mostra a lua. */
+.theme-toggle .icon-moon { display: none; }
+:root[data-theme="light"] .theme-toggle .icon-sun { display: none; }
+:root[data-theme="light"] .theme-toggle .icon-moon { display: block; }
 
 .btn {
     position: relative;
@@ -74,13 +100,14 @@
     background: var(--bg-card);
     border-color: var(--border-subtle);
     color: var(--text-main);
+    box-shadow: var(--shadow-card);
     backdrop-filter: var(--glass-blur);
     -webkit-backdrop-filter: var(--glass-blur);
 }
 
 .btn.btn--secondary:hover {
-    border-color: rgba(255, 255, 255, 0.35);
-    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--fg-a35);
+    background: var(--fg-a08);
     color: var(--text-main);
 }
 

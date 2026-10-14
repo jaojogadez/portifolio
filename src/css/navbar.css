@@ -13,12 +13,12 @@
     z-index: 1000;
 
     /* Efeito "ilha flutuante" */
-    background: rgba(5, 5, 5, 0.65);
+    background: var(--navbar-bg);
     backdrop-filter: var(--glass-blur);
     -webkit-backdrop-filter: var(--glass-blur);
     border: 1px solid var(--border-subtle);
     border-radius: 9999px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255,255,255,0.04);
+    box-shadow: var(--navbar-shadow);
 
     /* Oculta por padrão — surge apenas após o hero */
     opacity: 0;
@@ -52,8 +52,8 @@
 /* Estado ao rolar (mais fechado / escurecido) */
 .navbar-wrapper.scrolled {
     top: 12px;
-    background: rgba(5, 5, 5, 0.9);
-    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255,255,255,0.06);
+    background: var(--navbar-bg-scrolled);
+    box-shadow: var(--navbar-shadow-scrolled);
 }
 
 /* --- Container interno --- */
@@ -79,6 +79,7 @@
     height: 52px;
     width: auto;
     object-fit: contain;
+    filter: var(--logo-filter);
     transition: transform 0.2s ease;
 }
 
@@ -111,12 +112,12 @@
 
 .navbar__nav-link:hover {
     color: var(--text-main);
-    background: rgba(255, 255, 255, 0.06);
+    background: var(--fg-a06);
 }
 
 .navbar__nav-link.active {
     color: var(--text-main);
-    background: rgba(255, 255, 255, 0.08);
+    background: var(--fg-a08);
 }
 
 /* --- Ações (CTA) --- */
@@ -145,8 +146,8 @@
 
 .navbar__btn-ghost:hover {
     color: var(--text-main);
-    border-color: rgba(255, 255, 255, 0.25);
-    background: rgba(255, 255, 255, 0.05);
+    border-color: var(--fg-a25);
+    background: var(--fg-a05);
 }
 
 .navbar__btn-primary {
@@ -174,7 +175,7 @@
 }
 
 .navbar__hamburger:hover {
-    background: rgba(255,255,255,0.06);
+    background: var(--fg-a06);
 }
 
 .navbar__hamburger span {

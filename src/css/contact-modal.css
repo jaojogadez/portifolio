@@ -14,6 +14,31 @@
     --input-focus: rgba(255, 255, 255, 0.06);
     --success-green: #25d366;
     --text-secondary: #e4e4e7;
+    --modal-scrim: rgba(0, 0, 0, 0.6);
+    --modal-shadow: 0 50px 120px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    --modal-shadow-mobile: 0 30px 80px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    --input-placeholder: rgba(255, 255, 255, 0.3);
+    --input-hover-bg: rgba(255, 255, 255, 0.03);
+    --input-hover-border: rgba(255, 255, 255, 0.12);
+    --input-focus-border: rgba(255, 255, 255, 0.35);
+    --input-focus-ring: 0 0 0 2px rgba(255, 255, 255, 0.06);
+}
+
+:root[data-theme="light"] {
+    --modal-bg: rgba(255, 255, 255, 0.97);
+    --modal-border: rgba(10, 10, 11, 0.10);
+    --input-bg: rgba(10, 10, 11, 0.03);
+    --input-border: rgba(10, 10, 11, 0.12);
+    --input-focus: #ffffff;
+    --text-secondary: #3f3f46;
+    --modal-scrim: rgba(10, 10, 11, 0.45);
+    --modal-shadow: 0 40px 100px rgba(10, 10, 11, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    --modal-shadow-mobile: 0 30px 70px rgba(10, 10, 11, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    --input-placeholder: rgba(10, 10, 11, 0.42);
+    --input-hover-bg: rgba(10, 10, 11, 0.05);
+    --input-hover-border: rgba(10, 10, 11, 0.20);
+    --input-focus-border: var(--accent-blue);
+    --input-focus-ring: 0 0 0 3px rgba(37, 99, 201, 0.15);
 }
 
 /* ─────────────────────────────────────────────
@@ -35,7 +60,7 @@
 .contact-modal.open {
     display: flex;
     backdrop-filter: blur(16px);
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: var(--modal-scrim);
 }
 
 .contact-modal__overlay {
@@ -57,14 +82,12 @@
     border: 1px solid var(--modal-border);
     border-radius: 20px;
     padding: 40px;
-    box-shadow:
-        0 50px 120px rgba(0, 0, 0, 0.7),
-        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    box-shadow: var(--modal-shadow);
     z-index: 1;
     animation: modal-appear 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     opacity: 0;
     scrollbar-width: thin;
-    scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
+    scrollbar-color: var(--fg-a10) transparent;
 }
 
 /* Custom scrollbar */
@@ -77,7 +100,7 @@
 }
 
 .contact-modal__container::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--fg-a10);
     border-radius: 3px;
 }
 
@@ -101,8 +124,8 @@
     height: 40px;
     border: none;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: var(--fg-a04);
+    border: 1px solid var(--fg-a08);
     color: var(--text-muted);
     cursor: pointer;
     display: flex;
@@ -113,8 +136,8 @@
 }
 
 .contact-modal__close:hover {
-    background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(255, 255, 255, 0.15);
+    background: var(--fg-a08);
+    border-color: var(--fg-a15);
     color: var(--text-main);
     transform: rotate(90deg);
 }
@@ -199,23 +222,23 @@
 .contact-form__input::placeholder,
 .contact-form__select::placeholder,
 .contact-form__textarea::placeholder {
-    color: rgba(255, 255, 255, 0.3);
+    color: var(--input-placeholder);
 }
 
 .contact-form__input:hover,
 .contact-form__select:hover,
 .contact-form__textarea:hover {
-    background: rgba(255, 255, 255, 0.03);
-    border-color: rgba(255, 255, 255, 0.12);
+    background: var(--input-hover-bg);
+    border-color: var(--input-hover-border);
 }
 
 .contact-form__input:focus,
 .contact-form__select:focus,
 .contact-form__textarea:focus {
     outline: none;
-    border-color: rgba(255, 255, 255, 0.35);
+    border-color: var(--input-focus-border);
     background: var(--input-focus);
-    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.06);
+    box-shadow: var(--input-focus-ring);
 }
 
 .contact-form__group:focus-within .contact-form__label {
@@ -346,9 +369,7 @@
         padding: 24px 20px;
         border-radius: 16px;
         max-height: calc(100vh - 100px);
-        box-shadow:
-            0 30px 80px rgba(0, 0, 0, 0.8),
-            inset 0 1px 0 rgba(255, 255, 255, 0.08);
+        box-shadow: var(--modal-shadow-mobile);
     }
 
     .contact-modal__close {
@@ -460,7 +481,7 @@
 
 .contact-form__submit:focus-visible,
 .contact-modal__close:focus-visible {
-    outline: 2px solid rgba(255, 255, 255, 0.5);
+    outline: 2px solid var(--fg-a50);
     outline-offset: 2px;
 }
 

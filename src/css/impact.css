@@ -2,527 +2,530 @@
    Módulo CSS: impact.css
    ============================================ */
 
-.impact {
-  width: 100%;
-  padding: 100px 40px;
-  box-sizing: border-box;
-  background: var(--bg-deep);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 60px;
-}
-
-.impact__subtitle {
-    max-width: 720px;
-  margin: 20px auto 0;
-  color: var(--text-muted);
-  font-size: 15px;
-  line-height: 1.6;
-  font-family: var(--font-body);
-  text-transform: none;
-  letter-spacing: 0;
-}
-
-/* Container do video e dos pontos flutuantes */
-.impact__showcase {
-  position: relative;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.impact__media {
-  width: 100%;
-  height: 70vh;
-  /* Altura predefinida para os mockups absolutos */
-  max-height: 75vh;
-  border-radius: var(--radius-lg);
-  background: transparent;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
-  perspective: 1000px;
-  /* Ajuda incrivelmente no 3D rendering the transforms no safari */
-}
-
-/* Base das imagens dos celulares */
-.impact__phone {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  height: 100%;
-  max-height: 65vh;
-  object-fit: contain;
-}
-
-.impact__phone--center {
-  z-index: 3;
-}
-
-.impact__phone--left {
-  z-index: 2;
-}
-
-.impact__phone--right {
-  z-index: 2;
-}
-
-/* Copys flutuantes em volta do video (sem box/cards) */
-.impact__point {
-  position: absolute;
-  z-index: 10;
-}
-
-.impact__point--top-left {
-  top: 15%;
-  left: 2%;
-  text-align: left;
-}
-
-.impact__point--left {
-  bottom: 12%;
-  left: 2%;
-  text-align: left;
-}
-
-.impact__point--right {
-  top: 40%;
-  right: 2%;
-  text-align: right;
-}
-
-.impact__point-val {
-  font-family: var(--font-display);
-  font-size: clamp(3rem, 6vw, 4.5rem);
-  color: var(--accent-blue);
-  margin: 0 0 5px;
-  line-height: 1;
-  letter-spacing: -0.02em;
-  text-shadow: 0 10px 40px rgba(91, 143, 217, 0.25);
-}
-
-.impact__point-text {
-  font-family: var(--font-body);
-  font-size: clamp(1rem, 2vw, 1.15rem);
-  font-weight: 600;
-  color: #ffffff;
-  line-height: 1.4;
-  margin: 0;
-  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.9);
-}
-
-.impact__head {
-  text-align: center;
-  margin-top: 10px;
-}
-
-.impact__title {
-  font-family: var(--font-display);
-  font-size: clamp(2rem, 5vw, 4rem);
-  color: var(--text-main);
-  line-height: 1.1;
-  text-transform: uppercase;
-  letter-spacing: -0.02em;
-  margin: 0;
-}
-
-.impact__title span {
-  background: linear-gradient(135deg, #fff 0%, #a1a1aa 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-/* --- CLASSE REVEAL PHONES (Animação estilo abafado para revelar as asas) --- */
-.reveal-phones {
-  opacity: 0;
-  transform: scale(0.92) translateY(30px);
-  will-change: transform, opacity;
-  transition:
-    opacity 0.8s ease,
-    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-/* Celulares de tras iniciam ocultos exatamente atras do celular central */
-.reveal-phones .impact__phone--left,
-.reveal-phones .impact__phone--right {
-  transform: translate(-50%, -50%) scale(0.9) rotate(0deg);
-  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.3s;
-  will-change: transform;
-}
-
-/* Estado ativado pelo Interaction Observer */
-.reveal-phones.revealed {
-  opacity: 1;
-  transform: scale(1) translateY(0);
-}
-
-/* Disparam para os lados (agr sem rotação e mais curtos) */
-.reveal-phones.revealed .impact__phone--left {
-  transform: translate(calc(-50% - 24%), -50%) scale(0.85);
-  /* 0deg natural */
-}
-
-.reveal-phones.revealed .impact__phone--right {
-  transform: translate(calc(-50% + 24%), -50%) scale(0.85);
-  /* 0deg natural */
-}
-
-
-
-/* =========================================
-   COMPARAÇÃO E GRÁFICOS (STATS)
-   ========================================= */
-
-.impact__stats-grid {
-  width: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 30px;
-  margin-top: 20px;
-}
-
-.impact__stat-card {
-  position: relative;
-  padding: 45px 40px;
-  border-radius: var(--radius-lg);
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-  overflow: hidden;
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  transition: transform 0.3s ease;
-}
-
-.impact__stat-card:hover {
-  transform: translateY(-5px);
-}
-
-.impact__stat-card--bad {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.impact__stat-card--good {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
-}
-
-/* Badge flutuante sobreposto (A Escolha Certa) */
-.stat-card__badge {
-  position: absolute;
-  top: 14px;
-  right: 30px;
-  display: inline-flex;
-  align-items: center;
-  padding: 6px 14px;
-  background: rgba(255, 255, 255, 0.1);
-  color: var(--text-main);
-  font-family: var(--font-body);
-  font-size: 0.75rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  border-radius: 9999px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.stat-card__head h4 {
-  font-family: var(--font-display);
-  font-size: clamp(1.4rem, 3vw, 1.8rem);
-  color: var(--text-main);
-  margin: 0 0 5px;
-  line-height: 1.2;
-}
-
-.stat-card__head p {
-  font-family: var(--font-body);
-  font-size: 0.95rem;
-  color: var(--text-muted);
-  margin: 0;
-  line-height: 1.5;
-  max-width: 85%;
-}
-
-/* Gráfico nativo via CSS */
-.stat-card__graph {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  height: 150px;
-  padding: 0 10px 20px;
-  /* espaco inferior pra borda */
-  border-bottom: 2px dashed rgba(255, 255, 255, 0.1);
-  gap: 15px;
-}
-
-.stat-bar {
-  flex: 1;
-  height: 100%;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  position: relative;
-  border-radius: 4px;
-  background: rgba(255, 255, 255, 0.02);
-}
-
-.stat-bar__fill {
-  width: 100%;
-  height: 0;
-  /* Começa oculto pro IntersectionObserver rodar */
-  border-radius: 4px;
-  will-change: height;
-}
-
-/* Cores - Gráfico Ruim */
-.stat-card__graph--bad .stat-bar__fill {
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.15) 0%,
-    transparent 100%
-  );
-  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.2);
-}
-
-/* Cores - Gráfico Bom (azul discreto) */
-.stat-card__graph--good .stat-bar__fill {
-  background: linear-gradient(
-    180deg,
-    rgba(91, 143, 217, 0.75) 0%,
-    rgba(91, 143, 217, 0) 100%
-  );
-  box-shadow:
-    inset 0 2px 0 #8bb0e8,
-    0 0 16px rgba(91, 143, 217, 0.25);
-}
-
-/* Animação que depende do observer do reveal.js (.revealed) */
-.impact__stat-card.revealed .stat-bar__fill {
-  animation: grow-bar 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  animation-delay: 0.4s;
-}
-
-@keyframes grow-bar {
-  0% {
-    height: 0%;
-  }
-
-  100% {
-    height: var(--h);
-  }
-}
-
-/* Métrica Gigante em Destaque */
-.stat-card__metric {
-  display: flex;
-  flex-direction: column;
-  margin-top: -10px;
-}
-
-.stat-card__metric h2 {
-  font-family: var(--font-display);
-  font-size: clamp(2.5rem, 5vw, 3.5rem);
-  color: var(--accent-blue);
-  line-height: 1;
-  margin: 0 0 5px;
-  letter-spacing: -0.02em;
-  text-shadow: 0 10px 30px rgba(91, 143, 217, 0.2);
-}
-
-.stat-card__metric span {
-  font-weight: 500;
-  color: #fff;
-  font-size: 0.95rem;
-}
-
-/* Checkmarks da lista */
-.stat-card__list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.stat-card__list li {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  font-size: 0.95rem;
-  color: var(--text-dim);
-  line-height: 1.4;
-}
-
-.stat-icon {
-  flex-shrink: 0;
-  margin-top: 2px;
-}
-
-.stat-icon--bad {
-  color: rgba(255, 255, 255, 0.4);
-}
-
-.stat-icon--good {
-  color: #00d26a;
-  /* Verdinho check Premium */
-}
-
-/* =========================================
-   CTA PREMIUM — Botão de Ação Principal
-   ========================================= */
-
-.impact__cta {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 40px;
-  width: 100%;
-}
-
-.impact__btn-premium {
-  padding: 16px 40px;
-  border-radius: 12px;
-}
-
-.impact__btn-premium-text {
-  position: relative;
-  z-index: 1;
-  font-size: clamp(0.9rem, 2.5vw, 1rem);
-  line-height: 1.2;
-}
-
-.impact__btn-premium-icon {
-  position: relative;
-  z-index: 1;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 20px;
-  height: 20px;
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.impact__btn-premium:hover .impact__btn-premium-icon {
-  transform: translateX(4px);
-}
-
-/* Responsivo */
-@media (max-width: 900px) {
-  .impact__stats-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .impact__showcase {
-    flex-direction: column;
-    gap: 30px;
-  }
-
-  .impact__media {
-    height: 50vh;
-  }
-
-  .impact__phone {
-    max-height: 45vh;
-  }
-
-  .impact__point {
-    position: relative;
-    inset: auto !important;
-    /* Reseta as direções absolutas */
-    text-align: center !important;
-  }
-
-  .stat-card__badge {
-    position: relative;
-    top: 0;
-    right: 0;
-    margin-bottom: -15px;
-    align-self: flex-start;
-  }
-}
-
-@media (max-width: 768px) {
-  .impact {
-    padding: 60px 20px;
-    gap: 40px;
-  }
-
-  .impact__title {
-    font-size: clamp(1.8rem, 7vw, 2.5rem);
-  }
-
-  .impact__stat-card {
-    padding: 30px 20px;
-  }
-
-  .impact__cta {
-    margin-top: 30px;
-  }
-
-  .impact__btn-premium {
+   .impact {
     width: 100%;
-    padding: 14px 30px;
-    font-size: 0.9rem;
+    padding: 100px 40px;
+    box-sizing: border-box;
+    background: var(--bg-deep);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 60px;
   }
-}
-
-@media (max-width: 680px) {
+  
+  .impact__subtitle {
+      max-width: 720px;
+    margin: 20px auto 0;
+    color: var(--text-muted);
+    font-size: 15px;
+    line-height: 1.6;
+    font-family: var(--font-body);
+    text-transform: none;
+    letter-spacing: 0;
+  }
+  
+  /* Container do video e dos pontos flutuantes */
+  .impact__showcase {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
   .impact__media {
-    height: 62vh;
+    width: 100%;
+    height: 70vh;
+    /* Altura predefinida para os mockups absolutos */
+    max-height: 75vh;
+    border-radius: var(--radius-lg);
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    -webkit-mask-image: var(--impact-media-mask);
+    mask-image: var(--impact-media-mask);
+    perspective: 1000px;
+    /* Ajuda incrivelmente no 3D rendering the transforms no safari */
   }
-
+  
+  /* Base das imagens dos celulares */
   .impact__phone {
-    max-height: 54vh;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    height: 100%;
+    max-height: 65vh;
+    object-fit: contain;
+    filter: var(--phone-filter);
   }
-
+  
   .impact__phone--center {
-    transform: translate(-50%, -50%) scale(1);
+    z-index: 3;
   }
-
+  
+  .impact__phone--left {
+    z-index: 2;
+  }
+  
+  .impact__phone--right {
+    z-index: 2;
+  }
+  
+  /* Copys flutuantes em volta do video (sem box/cards) */
+  .impact__point {
+    position: absolute;
+    z-index: 10;
+  }
+  
+  .impact__point--top-left {
+    top: 15%;
+    left: 2%;
+    text-align: left;
+  }
+  
+  .impact__point--left {
+    bottom: 12%;
+    left: 2%;
+    text-align: left;
+  }
+  
+  .impact__point--right {
+    top: 40%;
+    right: 2%;
+    text-align: right;
+  }
+  
+  .impact__point-val {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 6vw, 4.5rem);
+    color: var(--accent-blue);
+    margin: 0 0 5px;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    text-shadow: 0 10px 40px rgba(var(--accent-rgb), 0.25);
+  }
+  
+  .impact__point-text {
+    font-family: var(--font-body);
+    font-size: clamp(1rem, 2vw, 1.15rem);
+    font-weight: 600;
+    color: var(--text-main);
+    line-height: 1.4;
+    margin: 0;
+    text-shadow: var(--text-shadow-float);
+  }
+  
+  .impact__head {
+    text-align: center;
+    margin-top: 10px;
+  }
+  
+  .impact__title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 4rem);
+    color: var(--text-main);
+    line-height: 1.1;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    margin: 0;
+  }
+  
+  .impact__title span {
+    background: linear-gradient(135deg, var(--text-main) 0%, var(--text-muted) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  /* --- CLASSE REVEAL PHONES (Animação estilo abafado para revelar as asas) --- */
+  .reveal-phones {
+    opacity: 0;
+    transform: scale(0.92) translateY(30px);
+    will-change: transform, opacity;
+    transition:
+      opacity 0.8s ease,
+      transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  
+  /* Celulares de tras iniciam ocultos exatamente atras do celular central */
   .reveal-phones .impact__phone--left,
   .reveal-phones .impact__phone--right {
     transform: translate(-50%, -50%) scale(0.9) rotate(0deg);
+    transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.3s;
+    will-change: transform;
   }
-
+  
+  /* Estado ativado pelo Interaction Observer */
+  .reveal-phones.revealed {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+  
+  /* Disparam para os lados (agr sem rotação e mais curtos) */
   .reveal-phones.revealed .impact__phone--left {
-    transform: translate(calc(-50% - 30%), -50%) scale(0.82) rotate(-5deg);
+    transform: translate(calc(-50% - 24%), -50%) scale(0.85);
+    /* 0deg natural */
   }
-
+  
   .reveal-phones.revealed .impact__phone--right {
-    transform: translate(calc(-50% + 30%), -50%) scale(0.82) rotate(5deg);
+    transform: translate(calc(-50% + 24%), -50%) scale(0.85);
+    /* 0deg natural */
   }
-}
-
-@media (max-width: 480px) {
-  .impact__media {
-    height: 58vh;
+  
+  
+  
+  /* =========================================
+     COMPARAÇÃO E GRÁFICOS (STATS)
+     ========================================= */
+  
+  .impact__stats-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 20px;
   }
-
-  .impact__phone {
-    max-height: 50vh;
+  
+  .impact__stat-card {
+    position: relative;
+    padding: 45px 40px;
+    border-radius: var(--radius-lg);
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    overflow: hidden;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    transition: transform 0.3s ease;
   }
-
-
-  .reveal-phones .impact__phone--left,
-  .reveal-phones .impact__phone--right {
-    transform: translate(-50%, -50%) scale(0.88) rotate(0deg);
+  
+  .impact__stat-card:hover {
+    transform: translateY(-5px);
   }
-
-  .reveal-phones.revealed .impact__phone--left {
-    transform: translate(calc(-50% - 15%), -50%) scale(0.78) rotate(-6deg);
+  
+  .impact__stat-card--bad {
+    background: var(--surface-weak);
+    border: 1px solid var(--edge-weak);
   }
-
-  .reveal-phones.revealed .impact__phone--right {
-    transform: translate(calc(-50% + 15%), -50%) scale(0.78) rotate(6deg);
+  
+  .impact__stat-card--good {
+    background: var(--surface-strong);
+    border: 1px solid var(--edge-strong);
+    box-shadow: var(--shadow-elevated);
   }
-}
+  
+  /* Badge flutuante sobreposto (A Escolha Certa) */
+  .stat-card__badge {
+    position: absolute;
+    top: 14px;
+    right: 30px;
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 14px;
+    background: var(--fg-a10);
+    color: var(--text-main);
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-radius: 9999px;
+    border: 1px solid var(--fg-a20);
+  }
+  
+  .stat-card__head h4 {
+    font-family: var(--font-display);
+    font-size: clamp(1.4rem, 3vw, 1.8rem);
+    color: var(--text-main);
+    margin: 0 0 5px;
+    line-height: 1.2;
+  }
+  
+  .stat-card__head p {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin: 0;
+    line-height: 1.5;
+    max-width: 85%;
+  }
+  
+  /* Gráfico nativo via CSS */
+  .stat-card__graph {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    height: 150px;
+    padding: 0 10px 20px;
+    /* espaco inferior pra borda */
+    border-bottom: 2px dashed var(--fg-a10);
+    gap: 15px;
+  }
+  
+  .stat-bar {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    position: relative;
+    border-radius: 4px;
+    background: var(--fg-a02);
+  }
+  
+  .stat-bar__fill {
+    width: 100%;
+    height: 0;
+    /* Começa oculto pro IntersectionObserver rodar */
+    border-radius: 4px;
+    will-change: height;
+  }
+  
+  /* Cores - Gráfico Ruim */
+  .stat-card__graph--bad .stat-bar__fill {
+    background: linear-gradient(
+      180deg,
+      var(--fg-a15) 0%,
+      transparent 100%
+    );
+    box-shadow: inset 0 2px 0 var(--fg-a20);
+  }
+  
+  /* Cores - Gráfico Bom (azul discreto) */
+  .stat-card__graph--good .stat-bar__fill {
+    background: linear-gradient(
+      180deg,
+      rgba(var(--accent-rgb), 0.75) 0%,
+      rgba(var(--accent-rgb), 0) 100%
+    );
+    box-shadow:
+      inset 0 2px 0 var(--accent-soft),
+      0 0 16px rgba(var(--accent-rgb), 0.25);
+  }
+  
+  /* Animação que depende do observer do reveal.js (.revealed) */
+  .impact__stat-card.revealed .stat-bar__fill {
+    animation: grow-bar 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: 0.4s;
+  }
+  
+  @keyframes grow-bar {
+    0% {
+      height: 0%;
+    }
+  
+    100% {
+      height: var(--h);
+    }
+  }
+  
+  /* Métrica Gigante em Destaque */
+  .stat-card__metric {
+    display: flex;
+    flex-direction: column;
+    margin-top: -10px;
+  }
+  
+  .stat-card__metric h2 {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    color: var(--accent-blue);
+    line-height: 1;
+    margin: 0 0 5px;
+    letter-spacing: -0.02em;
+    text-shadow: 0 10px 30px rgba(var(--accent-rgb), 0.2);
+  }
+  
+  .stat-card__metric span {
+    font-weight: 500;
+    color: var(--text-main);
+    font-size: 0.95rem;
+  }
+  
+  /* Checkmarks da lista */
+  .stat-card__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .stat-card__list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.95rem;
+    color: var(--text-dim);
+    line-height: 1.4;
+  }
+  
+  .stat-icon {
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  
+  .stat-icon--bad {
+    color: var(--fg-a40);
+  }
+  
+  .stat-icon--good {
+    color: var(--color-success);
+    /* Verdinho check Premium */
+  }
+  
+  /* =========================================
+     CTA PREMIUM — Botão de Ação Principal
+     ========================================= */
+  
+  .impact__cta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+    width: 100%;
+  }
+  
+  .impact__btn-premium {
+    padding: 16px 40px;
+    border-radius: 12px;
+  }
+  
+  .impact__btn-premium-text {
+    position: relative;
+    z-index: 1;
+    font-size: clamp(0.9rem, 2.5vw, 1rem);
+    line-height: 1.2;
+  }
+  
+  .impact__btn-premium-icon {
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  
+  .impact__btn-premium:hover .impact__btn-premium-icon {
+    transform: translateX(4px);
+  }
+  
+  /* Responsivo */
+  @media (max-width: 900px) {
+    .impact__stats-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .impact__showcase {
+      flex-direction: column;
+      gap: 30px;
+    }
+  
+    .impact__media {
+      height: 50vh;
+    }
+  
+    .impact__phone {
+      max-height: 45vh;
+    }
+  
+    .impact__point {
+      position: relative;
+      inset: auto !important;
+      /* Reseta as direções absolutas */
+      text-align: center !important;
+    }
+  
+    .stat-card__badge {
+      position: relative;
+      top: 0;
+      right: 0;
+      margin-bottom: -15px;
+      align-self: flex-start;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .impact {
+      padding: 60px 20px;
+      gap: 40px;
+    }
+  
+    .impact__title {
+      font-size: clamp(1.8rem, 7vw, 2.5rem);
+    }
+  
+    .impact__stat-card {
+      padding: 30px 20px;
+    }
+  
+    .impact__cta {
+      margin-top: 30px;
+    }
+  
+    .impact__btn-premium {
+      width: 100%;
+      padding: 14px 30px;
+      font-size: 0.9rem;
+    }
+  }
+  
+  @media (max-width: 680px) {
+    .impact__media {
+      height: 62vh;
+    }
+  
+    .impact__phone {
+      max-height: 54vh;
+    }
+  
+    .impact__phone--center {
+      transform: translate(-50%, -50%) scale(1);
+    }
+  
+    .reveal-phones .impact__phone--left,
+    .reveal-phones .impact__phone--right {
+      transform: translate(-50%, -50%) scale(0.9) rotate(0deg);
+    }
+  
+    .reveal-phones.revealed .impact__phone--left {
+      transform: translate(calc(-50% - 30%), -50%) scale(0.82) rotate(-5deg);
+    }
+  
+    .reveal-phones.revealed .impact__phone--right {
+      transform: translate(calc(-50% + 30%), -50%) scale(0.82) rotate(5deg);
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .impact__media {
+      height: 58vh;
+    }
+  
+    .impact__phone {
+      max-height: 50vh;
+    }
+  
+  
+    .reveal-phones .impact__phone--left,
+    .reveal-phones .impact__phone--right {
+      transform: translate(-50%, -50%) scale(0.88) rotate(0deg);
+    }
+  
+    .reveal-phones.revealed .impact__phone--left {
+      transform: translate(calc(-50% - 15%), -50%) scale(0.78) rotate(-6deg);
+    }
+  
+    .reveal-phones.revealed .impact__phone--right {
+      transform: translate(calc(-50% + 15%), -50%) scale(0.78) rotate(6deg);
+    }
+  }

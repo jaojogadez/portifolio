@@ -1,7 +1,26 @@
-:root {
+/* =========================================================
+   config.css — Design tokens (tema escuro = padrão | tema claro)
+
+   Regra de ouro: nenhum módulo deve usar cor literal.
+   Tudo passa por estes tokens. Exceção consciente:
+   textos/overlays SOBRE FOTOS (services.css) e SOBRE
+   BOTÕES AZUIS (#fff) permanecem fixos nos dois temas.
+   ========================================================= */
+
+   :root {
+    color-scheme: dark;
+}
+
+/* O "visor" dos mockups do portfólio é sempre escuro (como uma
+   tela de dispositivo real), por isso recebe os tokens escuros
+   mesmo quando a página está no tema claro. */
+:root,
+:root[data-theme="light"] .portfolio__screen {
     /* --- Cores Primárias --- */
     --bg-deep: #050505;
     /* Fundo preto minimalista */
+    --bg-rgb: 5, 5, 5;
+    /* Mesmo fundo em canais RGB (para rgba(var(--bg-rgb), .x)) */
     --bg-card: rgba(255, 255, 255, 0.04);
     /* Glassmorphism base */
 
@@ -9,6 +28,10 @@
     /* Action Blue (CTAs / botões) */
     --accent-blue: #5b8fd9;
     /* Azul discreto (destaques de texto, hover, dados) */
+    --accent-rgb: 91, 143, 217;
+    /* accent-blue em canais RGB */
+    --accent-soft: #8bb0e8;
+    /* Realce claro do accent (linhas de topo em gráficos) */
 
     /* --- Tipografia --- */
     --text-main: #ffffff;
@@ -27,6 +50,7 @@
     /* --- Efeitos --- */
     --glass-blur: blur(12px);
     --shadow-blue: 0 4px 20px rgba(0, 98, 255, 0.3);
+    --shadow-card: none;
     --glow-radial: radial-gradient(circle at center, rgba(255, 255, 255, 0.06) 0%, transparent 70%);
 
     /* --- Fontes (Recomendação: Importar no HTML/Google Fonts) --- */
@@ -34,7 +58,228 @@
     /* Para Headings */
     --font-body: 'Inter', sans-serif;
     /* Para leitura */
+
+    /* --- Escala de "tinta" (overlays neutros sobre o fundo) ---
+       Nome = alpha no tema escuro. Escuro: branco | Claro: quase-preto. */
+    --fg-a02: rgba(255, 255, 255, 0.02);
+    --fg-a03: rgba(255, 255, 255, 0.03);
+    --fg-a04: rgba(255, 255, 255, 0.04);
+    --fg-a05: rgba(255, 255, 255, 0.05);
+    --fg-a06: rgba(255, 255, 255, 0.06);
+    --fg-a08: rgba(255, 255, 255, 0.08);
+    --fg-a10: rgba(255, 255, 255, 0.10);
+    --fg-a12: rgba(255, 255, 255, 0.12);
+    --fg-a15: rgba(255, 255, 255, 0.15);
+    --fg-a18: rgba(255, 255, 255, 0.18);
+    --fg-a20: rgba(255, 255, 255, 0.20);
+    --fg-a25: rgba(255, 255, 255, 0.25);
+    --fg-a30: rgba(255, 255, 255, 0.30);
+    --fg-a35: rgba(255, 255, 255, 0.35);
+    --fg-a40: rgba(255, 255, 255, 0.40);
+    --fg-a45: rgba(255, 255, 255, 0.45);
+    --fg-a50: rgba(255, 255, 255, 0.50);
+    --fg-a55: rgba(255, 255, 255, 0.55);
+    --fg-a70: rgba(255, 255, 255, 0.70);
+    --fg-a75: rgba(255, 255, 255, 0.75);
+    --fg-a90: rgba(255, 255, 255, 0.90);
+
+    /* --- Status --- */
+    --color-success: #00d26a;
+    --color-positive: #34d399;
+    --color-negative: #f87171;
+
+    /* --- Superfícies específicas --- */
+    --screen-bg: #050505;
+    --surface-weak: rgba(255, 255, 255, 0.02);
+    --edge-weak: rgba(255, 255, 255, 0.05);
+    --surface-strong: rgba(255, 255, 255, 0.04);
+    --edge-strong: rgba(255, 255, 255, 0.14);
+    --shadow-elevated: 0 20px 40px rgba(0, 0, 0, 0.25);
+
+    --faq-card-bg: rgba(255, 255, 255, 0.05);
+    --faq-card-border: rgba(255, 255, 255, 0.08);
+    --faq-active-bg: #1a3055;
+    --faq-active-shadow: none;
+
+    --chip-bg: rgba(255, 255, 255, 0.03);
+    --chip-border: rgba(255, 255, 255, 0.08);
+    --frame-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.015));
+    --dot-inactive: rgba(255, 255, 255, 0.1);
+
+    /* --- Imagens / sombras --- */
+    --logo-filter: none;
+    --phone-filter: none;
+    --text-shadow-float: 0 4px 15px rgba(0, 0, 0, 0.9);
+    --shadow-media: 0 20px 40px rgba(0, 0, 0, 0.5);
+    --glow-soft: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 70%, transparent 100%);
+    --shadow-panel: 0 10px 30px -18px rgba(0, 0, 0, 0.8);
+    --shadow-panel-mobile: 0 16px 36px -12px rgba(0, 0, 0, 0.85);
+    --shadow-panel-mobile-active: 0 20px 42px -10px rgba(0, 0, 0, 0.95), 0 0 20px rgba(91, 143, 217, 0.18);
+
+    /* --- Navbar --- */
+    --navbar-bg: rgba(5, 5, 5, 0.65);
+    --navbar-bg-scrolled: rgba(5, 5, 5, 0.9);
+    --navbar-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.04);
+    --navbar-shadow-scrolled: 0 8px 40px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.06);
+
+    /* --- Hero --- */
+    --orb-main-a: rgba(255, 255, 255, 0.05);
+    --orb-main-b: rgba(255, 255, 255, 0.015);
+    --orb-side: rgba(255, 255, 255, 0.03);
+    --hero-glow: rgba(255, 255, 255, 0.12);
+    --hero-image-filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.7));
+    --marquee-outline: rgba(255, 255, 255, 0.055);
+    --marquee-fill: rgba(255, 255, 255, 0.9);
+    --hero-btn-bg: rgba(255, 255, 255, 0.04);
+    --hero-btn-border: rgba(255, 255, 255, 0.09);
+    --hero-btn-hover-bg: rgba(255, 255, 255, 0.09);
+    --hero-btn-hover-border: rgba(255, 255, 255, 0.18);
+    --hero-btn-hover-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    --hero-bottom-grad: linear-gradient(to top,
+        var(--bg-deep) 0%,
+        rgba(5, 5, 5, 0.97) 25%,
+        rgba(5, 5, 5, 0.75) 55%,
+        rgba(5, 5, 5, 0.2) 80%,
+        transparent 100%);
+    --hero-bottom-grad-mobile: linear-gradient(to top,
+        var(--bg-deep) 0%,
+        var(--bg-deep) 30%,
+        rgba(5, 5, 5, 0.90) 65%,
+        rgba(5, 5, 5, 0.4) 85%,
+        transparent 100%);
+
+    /* --- Impact --- */
+    --impact-media-mask: none;
 }
+
+:root[data-theme="light"] {
+    color-scheme: light;
+
+    /* --- Cores Primárias --- */
+    --bg-deep: #f7f8fa;                    /* off-white levemente frio, mais elegante que #fff puro */
+    --bg-rgb: 247, 248, 250;
+    --bg-card: #ffffff;                    /* card sólido (glass não funciona no claro) */
+
+    --primary-blue: #0062ff;               /* CTA mantém: ~5:1 com texto branco */
+    --accent-blue: #2563c9;                /* versão escurecida p/ texto e hover (~5.5:1) */
+    --accent-rgb: 37, 99, 201;
+    --accent-soft: #2563c9;
+
+    /* --- Tipografia --- */
+    --text-main: #0a0a0b;
+    --text-muted: #52525b;                 /* ~7.7:1 */
+    --text-dim: #71717a;                   /* ~4.8:1 */
+
+    /* --- Superfícies e Bordas --- */
+    --border-subtle: rgba(10, 10, 11, 0.08);
+    --radius-lg: 16px;
+    --radius-md: 12px;
+    --radius-sm: 8px;
+
+    /* --- Efeitos --- */
+    --glass-blur: blur(12px);              /* útil só em navbar/overlays translúcidos */
+    --shadow-blue: 0 4px 16px rgba(0, 98, 255, 0.22);
+    --shadow-card: 0 1px 2px rgba(10, 10, 11, 0.04), 0 8px 24px rgba(10, 10, 11, 0.06);
+    --glow-radial: radial-gradient(circle at center, rgba(0, 98, 255, 0.07) 0%, transparent 70%);
+
+    /* --- Escala de "tinta" (quase-preto no claro) --- */
+    --fg-a02: rgba(10, 10, 11, 0.03);
+    --fg-a03: rgba(10, 10, 11, 0.04);
+    --fg-a04: rgba(10, 10, 11, 0.05);
+    --fg-a05: rgba(10, 10, 11, 0.06);
+    --fg-a06: rgba(10, 10, 11, 0.07);
+    --fg-a08: rgba(10, 10, 11, 0.09);
+    --fg-a10: rgba(10, 10, 11, 0.11);
+    --fg-a12: rgba(10, 10, 11, 0.13);
+    --fg-a15: rgba(10, 10, 11, 0.16);
+    --fg-a18: rgba(10, 10, 11, 0.20);
+    --fg-a20: rgba(10, 10, 11, 0.22);
+    --fg-a25: rgba(10, 10, 11, 0.26);
+    --fg-a30: rgba(10, 10, 11, 0.32);
+    --fg-a35: rgba(10, 10, 11, 0.38);
+    --fg-a40: rgba(10, 10, 11, 0.44);
+    --fg-a45: rgba(10, 10, 11, 0.50);
+    --fg-a50: rgba(10, 10, 11, 0.55);
+    --fg-a55: rgba(10, 10, 11, 0.62);
+    --fg-a70: rgba(10, 10, 11, 0.75);
+    --fg-a75: rgba(10, 10, 11, 0.78);
+    --fg-a90: rgba(10, 10, 11, 0.90);
+
+    /* --- Status (versões com contraste em fundo claro) --- */
+    --color-success: #00a152;
+    --color-positive: #059669;
+    --color-negative: #dc2626;
+
+    /* --- Superfícies específicas --- */
+    --screen-bg: #050505;
+    --surface-weak: rgba(255, 255, 255, 0.6);
+    --edge-weak: rgba(10, 10, 11, 0.06);
+    --surface-strong: #ffffff;
+    --edge-strong: rgba(10, 10, 11, 0.10);
+    --shadow-elevated: 0 1px 2px rgba(10, 10, 11, 0.04), 0 16px 40px rgba(10, 10, 11, 0.08);
+
+    --faq-card-bg: #ffffff;
+    --faq-card-border: rgba(10, 10, 11, 0.08);
+    --faq-active-bg: #e8effb;
+    --faq-active-shadow: 0 12px 32px rgba(37, 99, 201, 0.12);
+
+    --chip-bg: #ffffff;
+    --chip-border: rgba(10, 10, 11, 0.08);
+    --frame-bg: linear-gradient(180deg, #ffffff, rgba(255, 255, 255, 0.6));
+    --dot-inactive: rgba(10, 10, 11, 0.18);
+
+    /* --- Imagens / sombras --- */
+    /* Logo branco → escuro. Ideal: trocar por uma versão escura do logo
+       (ver nota na resposta); este filtro é o fallback. */
+    --logo-filter: invert(1) hue-rotate(180deg);
+    --phone-filter: none;
+    --text-shadow-float: none;
+    --shadow-media: 0 20px 40px rgba(10, 10, 11, 0.16);
+    --glow-soft: radial-gradient(circle, rgba(0, 98, 255, 0.12) 0%, rgba(0, 98, 255, 0.03) 70%, transparent 100%);
+    --shadow-panel: 0 14px 30px -18px rgba(10, 10, 11, 0.4);
+    --shadow-panel-mobile: 0 16px 36px -12px rgba(10, 10, 11, 0.4);
+    --shadow-panel-mobile-active: 0 20px 42px -10px rgba(10, 10, 11, 0.45), 0 0 20px rgba(37, 99, 201, 0.18);
+
+    /* --- Navbar --- */
+    --navbar-bg: rgba(255, 255, 255, 0.72);
+    --navbar-bg-scrolled: rgba(255, 255, 255, 0.92);
+    --navbar-shadow: 0 8px 32px rgba(10, 10, 11, 0.10), 0 0 0 1px rgba(10, 10, 11, 0.04);
+    --navbar-shadow-scrolled: 0 8px 40px rgba(10, 10, 11, 0.14), 0 0 0 1px rgba(10, 10, 11, 0.06);
+
+    /* --- Hero --- */
+    --orb-main-a: rgba(0, 98, 255, 0.07);
+    --orb-main-b: rgba(0, 98, 255, 0.02);
+    --orb-side: rgba(0, 98, 255, 0.05);
+    --hero-glow: rgba(0, 98, 255, 0.14);
+    --hero-image-filter: none;
+    --marquee-outline: rgba(10, 10, 11, 0.06);
+    --marquee-fill: rgba(10, 10, 11, 0.92);
+    --hero-btn-bg: rgba(255, 255, 255, 0.75);
+    --hero-btn-border: rgba(10, 10, 11, 0.10);
+    --hero-btn-hover-bg: #ffffff;
+    --hero-btn-hover-border: rgba(10, 10, 11, 0.20);
+    --hero-btn-hover-shadow: 0 6px 20px rgba(10, 10, 11, 0.10);
+    --hero-bottom-grad: linear-gradient(to top,
+        var(--bg-deep) 0%,
+        rgba(247, 248, 250, 0.88) 14%,
+        rgba(247, 248, 250, 0.45) 40%,
+        rgba(247, 248, 250, 0.10) 68%,
+        transparent 100%);
+    --hero-bottom-grad-mobile: linear-gradient(to top,
+        var(--bg-deep) 0%,
+        var(--bg-deep) 20%,
+        rgba(247, 248, 250, 0.70) 48%,
+        rgba(247, 248, 250, 0.22) 76%,
+        transparent 100%);
+
+    /* --- Impact: dissolve as bordas do palco dos celulares (evita linha dura) --- */
+    --impact-media-mask: linear-gradient(to bottom,
+        transparent 0%,
+        #000 3%,
+        #000 97%,
+        transparent 100%);
+}
+
 
 /* Reset básico para aplicação do Design System */
 html, body {
@@ -81,4 +326,3 @@ h3,
         transition: none !important;
     }
 }
-
