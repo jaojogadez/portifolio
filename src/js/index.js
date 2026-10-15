@@ -9,8 +9,10 @@ import { initReveal } from './reveal.js';
 import { initPortfolio } from './portfolio.js';
 import { initContactModal } from './contact-modal.js';
 import { initServices } from './services.js';
+import { initScrollTheme } from './scroll-theme.js';
 
 document.addEventListener('DOMContentLoaded', () => {
+    initScrollTheme();
     initNavbar();
     initReveal();
     initPortfolio();

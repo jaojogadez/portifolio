@@ -1,0 +1,39 @@
+/* ============================================
+   Módulo CSS: scroll-theme.css
+   Crossfade do tema via View Transitions API.
+   Roda no compositor (GPU): não anima cor/sombra/filtro
+   elemento por elemento, então não pesa no scroll.
+
+   O tema NOVO aparece já 100% (página viva, sem deslizar);
+   só a "foto" do tema antigo, por cima, some rápido.
+   ============================================ */
+
+   ::view-transition-old(root),
+   ::view-transition-new(root) {
+     mix-blend-mode: normal;
+   }
+   
+   ::view-transition-new(root) {
+     animation: none;
+   }
+   
+   ::view-transition-old(root) {
+     z-index: 2;
+     animation: theme-fade-out 0.22s ease-out both;
+   }
+   
+   @keyframes theme-fade-out {
+     to { opacity: 0; }
+   }
+   
+   /* Não bloqueia cliques/scroll enquanto o fade acontece */
+   ::view-transition {
+     pointer-events: none;
+   }
+   
+   @media (prefers-reduced-motion: reduce) {
+     ::view-transition-old(root),
+     ::view-transition-new(root) {
+       animation: none !important;
+     }
+   }

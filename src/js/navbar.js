@@ -1,7 +1,11 @@
+import { getBaseTheme, setBaseTheme } from './scroll-theme.js';
+
 /* ── Alternância de tema (claro/escuro) ──
    O tema inicial é aplicado por um script inline no <head> (evita flash).
-   Aqui só ligamos os botões .theme-toggle (desktop e drawer mobile). */
-   function initThemeToggle() {
+   O botão altera o tema BASE (scroll-theme.js), e as seções com
+   data-tone="invert" continuam mostrando o oposto dele.
+   O aria-pressed acompanha o tema efetivo, que muda também ao rolar. */
+function initThemeToggle() {
     const root = document.documentElement;
     const buttons = document.querySelectorAll('.theme-toggle');
     if (!buttons.length) return;
@@ -12,14 +16,12 @@
     };
 
     sync();
+    document.addEventListener('themechange', sync);
 
     buttons.forEach(b =>
-        b.addEventListener('click', () => {
-            const next = root.dataset.theme === 'light' ? 'dark' : 'light';
-            root.dataset.theme = next;
-            try { localStorage.setItem('theme', next); } catch (e) { /* storage indisponível */ }
-            sync();
-        })
+        b.addEventListener('click', () =>
+            setBaseTheme(getBaseTheme() === 'light' ? 'dark' : 'light')
+        )
     );
 }
 
