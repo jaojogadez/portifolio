@@ -56,6 +56,116 @@
     box-shadow: var(--navbar-shadow-scrolled);
 }
 
+/* ============================================
+   Comportamento "esconde ao rolar" (somente desktop)
+   - rolar para baixo  → navbar sai para cima, só o burger fica
+   - rolar para cima   → navbar volta completa
+   - clicar no burger  → navbar volta completa
+   ============================================ */
+.navbar-fab {
+    display: none; /* só existe no desktop, ver media query abaixo */
+}
+
+@media (min-width: 901px) {
+    /* Recolhida: anima a saída para cima da tela */
+    .navbar-wrapper.visible.nav-hidden {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transform: translateX(-50%) translateY(calc(-100% - 40px));
+        transition:
+            top        0.35s ease,
+            background 0.35s ease,
+            box-shadow 0.35s ease,
+            opacity    0.35s ease-in,
+            transform  0.5s cubic-bezier(0.7, 0, 0.84, 0),
+            visibility 0s 0.5s; /* só some de vez depois da animação */
+    }
+
+    /* Burger flutuante */
+    .navbar-fab {
+        position: fixed;
+        top: 12px;
+        right: 24px;
+        z-index: 1000;
+        width: 52px;
+        height: 52px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        padding: 0;
+        cursor: pointer;
+        border-radius: 9999px;
+        background: var(--navbar-bg-scrolled);
+        backdrop-filter: var(--glass-blur);
+        -webkit-backdrop-filter: var(--glass-blur);
+        border: 1px solid var(--border-subtle);
+        box-shadow: var(--navbar-shadow-scrolled);
+        -webkit-tap-highlight-color: transparent;
+
+        /* Oculto por padrão */
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transform: translateY(-24px) scale(0.85);
+        transition:
+            opacity    0.3s ease,
+            transform  0.45s cubic-bezier(0.16, 1, 0.3, 1),
+            background 0.2s ease,
+            visibility 0s 0.45s;
+    }
+
+    .navbar-fab.show {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transform: translateY(0) scale(1);
+        transition:
+            opacity    0.3s ease 0.15s,
+            transform  0.45s cubic-bezier(0.16, 1, 0.3, 1) 0.15s,
+            background 0.2s ease,
+            visibility 0s 0s;
+    }
+
+    .navbar-fab:hover {
+        background: var(--navbar-bg-scrolled);
+        border-color: var(--fg-a25);
+    }
+
+    .navbar-fab.show:hover {
+        transform: translateY(0) scale(1.06);
+        transition-delay: 0s;
+    }
+
+    .navbar-fab.show:active {
+        transform: translateY(0) scale(0.95);
+    }
+
+    .navbar-fab:focus-visible {
+        outline: 2px solid var(--fg-a50);
+        outline-offset: 3px;
+    }
+
+    .navbar-fab span {
+        display: block;
+        width: 20px;
+        height: 2px;
+        background: var(--text-main);
+        border-radius: 2px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .navbar-wrapper.visible.nav-hidden,
+    .navbar-fab,
+    .navbar-fab.show {
+        transition-duration: 0.01s !important;
+        transition-delay: 0s !important;
+    }
+}
+
 /* --- Container interno --- */
 .navbar {
     display: flex;

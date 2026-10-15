@@ -33,18 +33,141 @@ export function initNavbar() {
 
     if (!wrapper || !hamburger || !mobileMenu) return;
 
-    /* ── Scroll: visibilidade e estado .scrolled em listener unificado ── */
+    /* ── Scroll: visibilidade, estado .scrolled e "esconde ao rolar" ──
+       Desktop (> 900px), depois do hero:
+         • rolar para baixo → navbar sai para cima; fica só o burger (#navbar-fab)
+         • rolar para cima  → navbar volta completa
+         • clicar no burger → navbar volta completa (fecha com clique fora, Esc,
+                              clique num link ou rolando ~200px para baixo)
+       Mobile (≤ 900px): comportamento original (botão burger sempre visível). */
     const heroSection = document.getElementById('hero');
-    const updateNavbarScroll = () => {
-        const scrollY = window.scrollY;
-        if (heroSection) {
-            const halfHero = heroSection.offsetHeight * 0.5;
-            wrapper.classList.toggle('visible', scrollY > halfHero);
+    const fab = document.getElementById('navbar-fab');
+    const desktopMQ = window.matchMedia('(min-width: 901px)');
+
+    const SCROLL_DELTA = 8;   // ignora micro-movimentos do scroll (px)
+    const PIN_RELEASE = 200;  // px rolados p/ baixo até fechar a navbar aberta pelo burger
+    const LINK_LOCK_MS = 800; // após clicar num link, ignora a direção do scroll (evita piscar)
+
+    let lastY = window.scrollY;
+    let wasPast = false;      // já estava depois do hero no último cálculo?
+    let collapsed = false;    // navbar recolhida (só o burger visível)
+    let pinned = false;       // navbar aberta manualmente pelo burger
+    let pinY = 0;
+    let lockUntil = 0;
+    let ticking = false;
+
+    function setCollapsed(value) {
+        collapsed = value;
+        const isDesktop = desktopMQ.matches;
+        wrapper.classList.toggle('nav-hidden', isDesktop && value);
+        if (fab) fab.classList.toggle('show', isDesktop && value);
+    }
+
+    function updateNavbarScroll() {
+        ticking = false;
+        const y = Math.max(window.scrollY, 0);
+        const pastHero = heroSection ? y > heroSection.offsetHeight * 0.5 : false;
+
+        if (heroSection) wrapper.classList.toggle('visible', pastHero);
+        wrapper.classList.toggle('scrolled', y > 30);
+
+        // Mobile: só visibilidade/scrolled, como antes
+        if (!desktopMQ.matches) {
+            lastY = y;
+            wasPast = pastHero;
+            return;
         }
-        wrapper.classList.toggle('scrolled', scrollY > 30);
-    };
-    window.addEventListener('scroll', updateNavbarScroll, { passive: true });
+
+        if (!pastHero) {
+            // Dentro do hero: nada aparece
+            pinned = false;
+            if (collapsed) setCollapsed(false);
+            lastY = y;
+        } else if (!wasPast || performance.now() < lockUntil) {
+            // Acabou de passar do hero (rolando p/ baixo) → já entra recolhida, só o burger
+            if (!wasPast) setCollapsed(true);
+            lastY = y;
+        } else {
+            const delta = y - lastY;
+            if (Math.abs(delta) >= SCROLL_DELTA) {
+                if (delta < 0) {
+                    // Rolando para cima → mostra a navbar completa
+                    pinned = false;
+                    if (collapsed) setCollapsed(false);
+                } else if (!pinned) {
+                    // Rolando para baixo → recolhe (animação de saída para cima)
+                    if (!collapsed) setCollapsed(true);
+                } else if (y - pinY > PIN_RELEASE) {
+                    // Aberta pelo burger: fecha depois de rolar um pouco
+                    pinned = false;
+                    setCollapsed(true);
+                }
+                lastY = y;
+            }
+        }
+        wasPast = pastHero;
+    }
+
+    window.addEventListener('scroll', () => {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(updateNavbarScroll);
+    }, { passive: true });
     updateNavbarScroll();
+
+    /* Troca de breakpoint: limpa o estado recolhido e recalcula */
+    const onBreakpointChange = () => {
+        pinned = false;
+        wasPast = false;
+        setCollapsed(false);
+        updateNavbarScroll();
+    };
+    if (desktopMQ.addEventListener) {
+        desktopMQ.addEventListener('change', onBreakpointChange);
+    } else {
+        desktopMQ.addListener(onBreakpointChange);
+    }
+
+    /* ── Burger flutuante: reabre a navbar completa ── */
+    if (fab) {
+        fab.addEventListener('click', (e) => {
+            pinned = true;
+            pinY = window.scrollY;
+            setCollapsed(false);
+            // Acionado por teclado: leva o foco para o primeiro link
+            if (e.detail === 0) {
+                requestAnimationFrame(() => {
+                    const first = wrapper.querySelector('.navbar__nav .navbar__nav-link');
+                    if (first) first.focus({ preventScroll: true });
+                });
+            }
+        });
+    }
+
+    /* Aberta pelo burger: fecha ao clicar fora */
+    document.addEventListener('click', (e) => {
+        if (!pinned) return;
+        if (wrapper.contains(e.target) || (fab && fab.contains(e.target))) return;
+        pinned = false;
+        setCollapsed(true);
+    });
+
+    /* Clicar num link da navbar recolhe o menu (e trava a direção do scroll
+       por um instante para não reabrir quando a página rolar para cima) */
+    wrapper.addEventListener('click', (e) => {
+        if (!desktopMQ.matches || !e.target.closest('a')) return;
+        lockUntil = performance.now() + LINK_LOCK_MS;
+        pinned = false;
+        setCollapsed(true);
+    });
+
+    /* Esc fecha a navbar aberta pelo burger */
+    document.addEventListener('keydown', (e) => {
+        if (e.key !== 'Escape' || !pinned) return;
+        pinned = false;
+        setCollapsed(true);
+        if (fab) fab.focus({ preventScroll: true });
+    });
 
 
     /* ── Hamburger toggle ── */
