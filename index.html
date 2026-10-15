@@ -524,23 +524,22 @@
         <!-- Painel: Negócio Sem Site -->
         <div class="impact__stat-card impact__stat-card--bad reveal">
           <div class="stat-card__head">
-            <h4>Negócio Sem Site</h4>
+            <h4>Empresa Sem Site</h4>
             <p>Fica dependente exclusivamente de redes sociais</p>
           </div>
           <!-- Gráfico Baixo (Pouca evolução) -->
-          <div class="stat-card__graph stat-card__graph--bad">
-            <div class="stat-bar">
-              <div class="stat-bar__fill" style="--h: 20%"></div>
-            </div>
-            <div class="stat-bar">
-              <div class="stat-bar__fill" style="--h: 28%"></div>
-            </div>
-            <div class="stat-bar">
-              <div class="stat-bar__fill" style="--h: 25%"></div>
-            </div>
-            <div class="stat-bar">
-              <div class="stat-bar__fill" style="--h: 30%"></div>
-            </div>
+          <div class="stat-card__graph stat-card__graph--bad" style="--end: 31%" role="img" aria-label="Gráfico de linha: crescimento estagnado">
+            <svg class="stat-line" viewBox="0 0 400 150" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+              <defs>
+                <linearGradient id="statAreaBad" x1="0" y1="0" x2="0" y2="1">
+                  <stop class="stat-line__stop stat-line__stop--top" offset="0"/>
+                  <stop class="stat-line__stop stat-line__stop--bottom" offset="1"/>
+                </linearGradient>
+              </defs>
+              <path class="stat-line__area" fill="url(#statAreaBad)" d="M0 111 C26.7 108 53.3 102 80 102 C106.7 102 133.3 108 160 108 C186.7 108 213.3 100.5 240 100.5 C266.7 100.5 293.3 106.5 320 106.5 C346.7 106.5 373.3 104.5 400 103.5 L400 150 L0 150 Z"/>
+              <path class="stat-line__path" d="M0 111 C26.7 108 53.3 102 80 102 C106.7 102 133.3 108 160 108 C186.7 108 213.3 100.5 240 100.5 C266.7 100.5 293.3 106.5 320 106.5 C346.7 106.5 373.3 104.5 400 103.5"/>
+            </svg>
+            <span class="stat-line__dot"></span>
           </div>
           <ul class="stat-card__list">
             <li>
@@ -608,19 +607,18 @@
             <p>Confiabilidade máxima e captação 24/7</p>
           </div>
           <!-- Gráfico Elevado e Acelerado -->
-          <div class="stat-card__graph stat-card__graph--good">
-            <div class="stat-bar">
-              <div class="stat-bar__fill" style="--h: 35%"></div>
-            </div>
-            <div class="stat-bar">
-              <div class="stat-bar__fill" style="--h: 60%"></div>
-            </div>
-            <div class="stat-bar">
-              <div class="stat-bar__fill" style="--h: 85%"></div>
-            </div>
-            <div class="stat-bar">
-              <div class="stat-bar__fill" style="--h: 110%"></div>
-            </div>
+          <div class="stat-card__graph stat-card__graph--good" style="--end: 94%" role="img" aria-label="Gráfico de linha: crescimento constante">
+            <svg class="stat-line" viewBox="0 0 400 150" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+              <defs>
+                <linearGradient id="statAreaGood" x1="0" y1="0" x2="0" y2="1">
+                  <stop class="stat-line__stop stat-line__stop--top" offset="0"/>
+                  <stop class="stat-line__stop stat-line__stop--bottom" offset="1"/>
+                </linearGradient>
+              </defs>
+              <path class="stat-line__area" fill="url(#statAreaGood)" d="M0 117 C26.7 111 53.3 104.5 80 99 C106.7 93.5 133.3 90.5 160 84 C186.7 77.5 213.3 68.5 240 60 C266.7 51.5 293.3 41.5 320 33 C346.7 24.5 373.3 17 400 9 L400 150 L0 150 Z"/>
+              <path class="stat-line__path" d="M0 117 C26.7 111 53.3 104.5 80 99 C106.7 93.5 133.3 90.5 160 84 C186.7 77.5 213.3 68.5 240 60 C266.7 51.5 293.3 41.5 320 33 C346.7 24.5 373.3 17 400 9"/>
+            </svg>
+            <span class="stat-line__dot"></span>
           </div>
           <div class="stat-card__metric">
             <h2>82%</h2>
