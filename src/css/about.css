@@ -35,9 +35,9 @@
 /* --- Grid Principal --- */
 .about-grid {
     display: grid;
-    grid-template-columns: 360px 1fr;
-    gap: 60px;
-    align-items: start;
+    grid-template-columns: 420px 1fr;
+    gap: 64px;
+    align-items: center;
 }
 
 /* --- Container da Foto --- */
@@ -46,9 +46,16 @@
 }
 
 .about-image-wrapper {
+    --about-shadow: rgba(0, 0, 0, 0.5);
     position: relative;
     width: 100%;
     border-radius: 24px;
+    /* Sombra que acompanha o recorte (o box-shadow seria cortado pela máscara) */
+    filter: drop-shadow(0 22px 32px var(--about-shadow));
+}
+
+:root[data-theme="light"] .about-image-wrapper {
+    --about-shadow: rgba(10, 10, 11, 0.18);
 }
 
 .about-avatar {
@@ -56,12 +63,15 @@
     height: auto;
     aspect-ratio: 4 / 5;
     object-fit: cover;
+    object-position: 50% 0%;        /* mantém o rosto sempre no topo do quadro */
     border-radius: 24px;
     border: 1px solid var(--fg-a12);
     position: relative;
     z-index: 2;
-    box-shadow: var(--shadow-media);
     display: block;
+    /* Base dissolve no fundo da página (corte na cintura sem "linha dura") */
+    -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 68%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 0%, #000 68%, transparent 100%);
 }
 
 .about-avatar-glow {
@@ -167,7 +177,7 @@
     }
 
     .about-visual {
-        max-width: 320px;
+        max-width: 380px;
         margin: 0 auto;
     }
 
